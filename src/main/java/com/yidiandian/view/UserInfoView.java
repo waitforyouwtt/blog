@@ -1,33 +1,21 @@
-package com.yidiandian.entity;
+package com.yidiandian.view;
 
-import lombok.*;
+import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
 import java.io.Serializable;
 import java.util.Date;
 
 /**
  * @Author: 凤凰[小哥哥]
- * @Date: 2019/9/24 22:40
+ * @Date: 2019/9/24 23:21
  * @Email: 15290810931@163.com
  */
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-@Entity
-@Builder
-@EntityListeners(AuditingEntityListener.class)
-@Table(name ="tb_user_info")
-@org.hibernate.annotations.Table(appliesTo = "tb_user_info",comment="用户信息表")
-public class UserInfo implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+public class UserInfoView implements Serializable{
 
     @Basic
     @Column(name = "user_name",columnDefinition="varchar(100) COMMENT '用户名'")
