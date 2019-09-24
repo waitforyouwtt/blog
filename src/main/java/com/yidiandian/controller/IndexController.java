@@ -1,7 +1,9 @@
 package com.yidiandian.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -10,11 +12,16 @@ import org.springframework.web.bind.annotation.RestController;
  * @Email: 15290810931@163.com
  */
 @Slf4j
-@RestController
+@Controller
 public class IndexController {
 
     @GetMapping("/")
     public String index(){
         return "index";
+    }
+
+    @GetMapping("/headline-logined")
+    public String headlineLogined(){
+        return "headline-logined";
     }
 }
