@@ -1,9 +1,7 @@
 package com.yidiandian.service;
 
 import com.yidiandian.entity.UserInfo;
-import com.yidiandian.jpa.UserInfoMapper;
 import com.yidiandian.view.UserInfoView;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @Author: 凤凰[小哥哥]
@@ -17,4 +15,10 @@ public interface UserInfoService {
      * @return
      */
     UserInfo addUserInfo(UserInfoView userInfoView);
+
+    /**
+     * 查询用户信息
+     * @return
+     */
+    UserInfo findUserInfo(UserInfoView userInfoView);
 }

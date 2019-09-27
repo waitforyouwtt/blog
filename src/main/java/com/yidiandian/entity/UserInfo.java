@@ -26,8 +26,13 @@ import java.util.Date;
 public class UserInfo implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "id", sequenceName = "id", allocationSize=1)
     private Integer id;
+
+    @Basic
+    @Column(name = "user_id",columnDefinition="varchar(100) COMMENT '用户id'")
+    private String userId;
 
     @Basic
     @Column(name = "user_name",columnDefinition="varchar(100) COMMENT '用户名'")
@@ -46,7 +51,7 @@ public class UserInfo implements Serializable {
     private Integer age;
 
     @Basic
-    @Column(name = "birthday",columnDefinition="int(11) COMMENT '用户生日'")
+    @Column(name = "birthday",columnDefinition="datetime COMMENT '用户生日'")
     private Date birthday;
 
     @Basic
@@ -66,12 +71,10 @@ public class UserInfo implements Serializable {
     private Integer isDelete;
 
     @Basic
-    @CreatedDate
     @Column(name = "create_time",columnDefinition="datetime COMMENT '创建时间'")
     private Date createTime;
 
     @Basic
-    @LastModifiedDate
     @Column(name = "update_time",columnDefinition="datetime COMMENT '修改时间'")
     private Date updateTime;
 }

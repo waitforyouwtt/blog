@@ -1,10 +1,10 @@
 package com.yidiandian;
 
+import com.yidiandian.utils.SnowflakeIdWorker;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.context.annotation.Bean;
 
-@EnableJpaAuditing
 @SpringBootApplication
 public class BlogApplication {
 
@@ -12,4 +12,8 @@ public class BlogApplication {
 		SpringApplication.run(BlogApplication.class, args);
 	}
 
+	@Bean
+	public SnowflakeIdWorker snowflakeIdWorker(){
+		return new SnowflakeIdWorker(1,1);
+	}
 }
