@@ -17,6 +17,12 @@ import java.util.Date;
 @Data
 public class UserInfoView implements Serializable{
 
+    private Integer id;
+
+    @Basic
+    @Column(name = "user_id",columnDefinition="varchar(100) COMMENT '用户id'")
+    private String userId;
+
     @Basic
     @Column(name = "user_name",columnDefinition="varchar(100) COMMENT '用户名'")
     private String userName;
@@ -24,6 +30,10 @@ public class UserInfoView implements Serializable{
     @Basic
     @Column(name = "nick_name",columnDefinition="varchar(100) COMMENT '用户昵称'")
     private String nickName;
+
+    @Basic
+    @Column(name = "oldPassword",columnDefinition="varchar(200) COMMENT '旧密码'")
+    private String oldPassword;
 
     @Basic
     @Column(name = "password",columnDefinition="varchar(200) COMMENT '用户密码'")
@@ -38,7 +48,7 @@ public class UserInfoView implements Serializable{
     private Date birthday;
 
     @Basic
-    @Column(name = "gender",columnDefinition="int(11) COMMENT '用户性别 1 男 2 女'")
+    @Column(name = "gender",columnDefinition="int(11) COMMENT '用户性别 1 男 2 女 3 保密'")
     private Integer gender;
 
     @Basic

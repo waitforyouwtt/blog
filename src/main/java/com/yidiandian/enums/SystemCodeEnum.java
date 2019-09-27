@@ -15,7 +15,10 @@ public enum SystemCodeEnum {
     PARAMS_NOT_POINT(2006,"参数为空"),
     QUERRY_ERROR(2007,"查询错误"),
     EXCEPTION(500000,"系统异常"),
-    ADD_USERINFO_EXCEPTION(3000,"用户添加异常")
+    ADD_USERINFO_EXCEPTION(3000,"用户添加异常"),
+    RECORD_IS_NOT_EXIST(3001,"记录不存在"),
+    PASSWORD_ERROR(3002,"您输入的旧密码错误，请重新输入"),
+    PASSWORD_EQUAL(3003,"输入的新密码不能等于旧密码"),
 
     ;
 

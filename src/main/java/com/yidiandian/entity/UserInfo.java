@@ -55,7 +55,7 @@ public class UserInfo implements Serializable {
     private Date birthday;
 
     @Basic
-    @Column(name = "gender",columnDefinition="int(11) COMMENT '用户性别 1 男 2 女'")
+    @Column(name = "gender",columnDefinition="int(11) COMMENT '用户性别 1 男 2 女 3 保密'")
     private Integer gender;
 
     @Basic

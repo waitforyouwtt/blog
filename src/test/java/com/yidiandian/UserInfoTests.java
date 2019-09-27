@@ -22,8 +22,8 @@ public class UserInfoTests extends BlogApplicationTests{
 	@Test
 	public void addUserInfoTest() {
 		UserInfoView view = new UserInfoView();
-		view.setUserName("凤凰小哥哥2");
-		view.setNickName("凤凰小哥哥2");
+		view.setUserName("凤凰小哥哥");
+		view.setNickName("凤凰小哥哥");
 		view.setPassword("wtt19940512577");
 		view.setAge(18);
 		view.setGender(1);
@@ -38,10 +38,21 @@ public class UserInfoTests extends BlogApplicationTests{
 	@Test
 	public void findUserTest(){
 		UserInfoView view = new UserInfoView();
-		view.setNickName("凤凰小哥哥2");
+		view.setNickName("凤凰小哥哥");
 		view.setPassword("wtt19940512577");
 		UserInfo userInfo = userInfoService.findUserInfo(view);
 		log.info("查询得到的用户信息：{}",userInfo);
+	}
+
+	@Test
+	public void updateUserTest(){
+      UserInfoView view = new UserInfoView();
+      view.setId(1);
+      view.setPassword("577521");
+      view.setNickName("小胖子凹凸曼");
+      view.setOldPassword("577521");
+      int update = userInfoService.changePassword(view);
+      log.info("修改的结果：{}",update);
 	}
 
 }

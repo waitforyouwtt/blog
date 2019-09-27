@@ -21,4 +21,13 @@ public interface UserInfoService {
      * @return
      */
     UserInfo findUserInfo(UserInfoView userInfoView);
+    /**
+     * 修改用户信息
+     */
+    int updateUserInfo(UserInfoView userInfoView);
+    /**
+     * 修改密码
+     */
+    int changePassword(UserInfoView userInfoView);
+
 }
