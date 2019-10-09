@@ -43,6 +43,10 @@ public class UserInfo implements Serializable {
     private String nickName;
 
     @Basic
+    @Column(name = "mobile",columnDefinition="varchar(25) COMMENT '用户手机号'")
+    private String mobile;
+
+    @Basic
     @Column(name = "password",columnDefinition="varchar(200) COMMENT '用户密码'")
     private String password;
 

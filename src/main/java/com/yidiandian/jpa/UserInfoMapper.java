@@ -12,6 +12,14 @@ import java.util.Optional;
  */
 public interface UserInfoMapper extends JpaRepository<UserInfo,Integer>{
 
+    Optional<UserInfo> findByUserNameAndPassword(String userName, String password);
+
     Optional<UserInfo> findByNickNameAndPassword(String nickName, String password);
+
+    Optional<UserInfo> findByMobileAndPassword(String mobile, String password);
+
+    Optional<UserInfo> findByEmailAndPassword(String email, String password);
+
+
 
 }

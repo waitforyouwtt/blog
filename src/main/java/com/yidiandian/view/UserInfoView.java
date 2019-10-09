@@ -32,6 +32,10 @@ public class UserInfoView implements Serializable{
     private String nickName;
 
     @Basic
+    @Column(name = "mobile",columnDefinition="varchar(25) COMMENT '用户手机号'")
+    private String mobile;
+
+    @Basic
     @Column(name = "oldPassword",columnDefinition="varchar(200) COMMENT '旧密码'")
     private String oldPassword;
 

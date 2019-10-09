@@ -6,9 +6,9 @@ package com.yidiandian.enums;
  */
 public enum SystemCodeEnum {
 
-    OK(2000,"成功"),
-    ERROR(2001,"失败"),
-    LOGIN_ERROR(2002,"用户名或密码错误"),
+    OK(200,"成功"),
+    ERROR(201,"失败"),
+    //LOGIN_ERROR(2002,"用户名或密码错误"),
     ACCESS_ERROR(2003,"权限不足"),
     REMOTE_ERROR(2004,"远程调用错误"),
     REP_ERROR(2005,"重复操作"),

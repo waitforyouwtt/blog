@@ -15,9 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller
 public class IndexController {
 
+    @GetMapping("/toLogin")
+    public String login(){
+        return "person-loginsign";
+    }
+
     @GetMapping("/")
     public String index(){
-        return "index";
+        return "toLogin";
     }
 
     @GetMapping("/headline-logined")

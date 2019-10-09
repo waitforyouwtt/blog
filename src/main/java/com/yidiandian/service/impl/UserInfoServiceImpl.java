@@ -1,6 +1,6 @@
 package com.yidiandian.service.impl;
 
-import com.yidiandian.constant.Constant;
+import com.yidiandian.constant.Constants;
 import com.yidiandian.dao.UserInfoDao;
 import com.yidiandian.entity.UserInfo;
 import com.yidiandian.enums.SystemCodeEnum;
@@ -49,7 +49,7 @@ public class UserInfoServiceImpl implements UserInfoService {
         userInfo.setUserId(idWorker.nextId()+"");
         userInfo.setCreateTime(new Date());
         userInfo.setUpdateTime(new Date());
-        userInfo.setPassword(AesUtil.encrypt(Constant.SECRET_KEY,userInfoView.getPassword()));
+        userInfo.setPassword(AesUtil.encrypt(Constants.SECRET_KEY,userInfoView.getPassword()));
         userInfo.setIsDelete(1);
         UserInfo result = null;
         try{
@@ -69,7 +69,53 @@ public class UserInfoServiceImpl implements UserInfoService {
      */
     @Override
     public UserInfo findUserInfo(UserInfoView userInfoView) {
-        Optional<UserInfo> optional = userInfoMapper.findByNickNameAndPassword(userInfoView.getNickName(),AesUtil.encrypt(Constant.SECRET_KEY,userInfoView.getPassword()));
+        UserInfo userInfo = null;
+        if (StringUtils.isBlank(userInfoView.getUserName()) && StringUtils.isBlank(userInfoView.getNickName()) &&
+        StringUtils.isBlank(userInfoView.getMobile()) && StringUtils.isBlank(userInfoView.getEmail())){
+            throw new MyException(SystemCodeEnum.PARAMS_NOT_POINT.getCode(),SystemCodeEnum.PARAMS_NOT_POINT.getMessage());
+        }
+        if (StringUtils.isNoneBlank(userInfoView.getUserName()) && StringUtils.isNoneBlank(userInfoView.getPassword())){
+            userInfo = findByUserName(userInfoView.getUserName(),userInfoView.getPassword());
+        }
+        if (StringUtils.isNoneBlank(userInfoView.getNickName()) && StringUtils.isNoneBlank(userInfoView.getPassword())){
+            userInfo = findByNickName(userInfoView.getNickName(),userInfoView.getPassword());
+        }
+        if (StringUtils.isNoneBlank(userInfoView.getMobile()) && StringUtils.isNoneBlank(userInfoView.getPassword())){
+            userInfo = findByMobile(userInfoView.getMobile(),userInfoView.getPassword());
+        }
+        if (StringUtils.isNoneBlank(userInfoView.getEmail()) && StringUtils.isNoneBlank(userInfoView.getPassword())){
+            userInfo = findByMobile(userInfoView.getEmail(),userInfoView.getPassword());
+        }
+        return userInfo;
+    }
+
+    //根据用户名字和密码查询用户
+    private UserInfo findByUserName(String userName,String password){
+        Optional<UserInfo> optional = userInfoMapper.findByUserNameAndPassword(userName,AesUtil.encrypt(Constants.SECRET_KEY,password));
+        if (optional.isPresent()){
+            return optional.get();
+        }
+        return null;
+    }
+    //根据用户名字和密码查询用户
+    private UserInfo findByNickName(String nickName,String password){
+        Optional<UserInfo> optional = userInfoMapper.findByNickNameAndPassword(nickName,AesUtil.encrypt(Constants.SECRET_KEY,password));
+        if (optional.isPresent()){
+            return optional.get();
+        }
+        return null;
+    }
+    //根据用户手机号和密码查询用户
+    private UserInfo findByMobile(String mobile,String password){
+        Optional<UserInfo> optional = userInfoMapper.findByMobileAndPassword(mobile,AesUtil.encrypt(Constants.SECRET_KEY,password));
+        if (optional.isPresent()){
+            return optional.get();
+        }
+        return null;
+    }
+    //根据用户邮箱和密码查询用户
+    private UserInfo findByEmail(String email,String password){
+        Optional<UserInfo> optional = userInfoMapper.findByEmailAndPassword(email,AesUtil.encrypt(Constants.SECRET_KEY,password));
         if (optional.isPresent()){
             return optional.get();
         }
@@ -103,20 +149,20 @@ public class UserInfoServiceImpl implements UserInfoService {
      */
     @Override
     public int changePassword(UserInfoView userInfoView) {
-        Optional<UserInfo> optional = userInfoMapper.findByNickNameAndPassword(userInfoView.getNickName(),AesUtil.encrypt(Constant.SECRET_KEY,userInfoView.getOldPassword()));
+        Optional<UserInfo> optional = userInfoMapper.findByNickNameAndPassword(userInfoView.getNickName(),AesUtil.encrypt(Constants.SECRET_KEY,userInfoView.getOldPassword()));
         if (!optional.isPresent()){
             throw new MyException(SystemCodeEnum.PASSWORD_ERROR.getCode(),SystemCodeEnum.PASSWORD_ERROR.getMessage());
         }
         UserInfo queryUserInfo = optional.get();
-        String password = AesUtil.encrypt(Constant.SECRET_KEY,userInfoView.getPassword());
-        String oldPassword = AesUtil.encrypt(Constant.SECRET_KEY,queryUserInfo.getPassword());
+        String password = AesUtil.encrypt(Constants.SECRET_KEY,userInfoView.getPassword());
+        String oldPassword = AesUtil.encrypt(Constants.SECRET_KEY,queryUserInfo.getPassword());
         if (password.equals(oldPassword)){
             throw new MyException(SystemCodeEnum.PASSWORD_EQUAL.getCode(),SystemCodeEnum.PASSWORD_EQUAL.getMessage());
         }
         UserInfo userInfo = new UserInfo();
         BeanCopier beanCopier = BeanCopier.create(UserInfoView.class, UserInfo.class, false);
         beanCopier.copy(userInfoView,userInfo,null);
-        userInfo.setPassword(AesUtil.encrypt(Constant.SECRET_KEY,userInfoView.getPassword()));
+        userInfo.setPassword(AesUtil.encrypt(Constants.SECRET_KEY,userInfoView.getPassword()));
         return userInfoDao.changePassword(userInfo);
     }
 }
