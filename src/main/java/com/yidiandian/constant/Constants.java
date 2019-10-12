@@ -15,4 +15,6 @@ public class Constants {
    public static final String COOKIE_KEY="loginKey";
 
    public static final String REDIS_USER_KEY="loginKey";
+
+   public static final String ADMIN = "Admin";
 }

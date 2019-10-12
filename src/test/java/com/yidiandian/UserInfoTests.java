@@ -25,6 +25,7 @@ public class UserInfoTests extends BlogApplicationTests{
 		view.setUserName("凤凰小哥哥");
 		view.setNickName("凤凰小哥哥");
 		view.setPassword("577521");
+		view.setMobile("17621007255");
 		view.setAge(18);
 		view.setGender(1);
 		view.setEmail("17621007255@163.com");
@@ -37,6 +38,7 @@ public class UserInfoTests extends BlogApplicationTests{
 		UserInfoView view1 = new UserInfoView();
 		view1.setUserName("张洁");
 		view1.setNickName("小胖子凹凸曼");
+		view1.setMobile("15290810931");
 		view1.setPassword("577521");
 		view1.setAge(18);
 		view1.setGender(1);

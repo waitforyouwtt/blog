@@ -1,8 +1,6 @@
 package com.yidiandian.entity;
 
 import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -73,6 +71,14 @@ public class UserInfo implements Serializable {
     @Basic
     @Column(name = "is_delete",columnDefinition="int(11) COMMENT '是否删除 1 未删除 2 已删除'")
     private Integer isDelete;
+
+    @Basic
+    @Column(name = "creator",columnDefinition="varchar(100) COMMENT '创建人'")
+    private String creator;
+
+    @Basic
+    @Column(name = "modifier",columnDefinition="varchar(100) COMMENT '更新人'")
+    private String modifier;
 
     @Basic
     @Column(name = "create_time",columnDefinition="datetime COMMENT '创建时间'")

@@ -1,6 +1,7 @@
 package com.yidiandian.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.sun.org.apache.regexp.internal.RE;
 import com.yidiandian.constant.Constants;
 import com.yidiandian.entity.UserInfo;
 import com.yidiandian.enums.BusinessEnum;
@@ -77,10 +78,19 @@ public class UserInfoController {
             //jedisClient.set(key, value, "NX", "EX", expireSecond);
             //jedisClient.set(uuid,JSON.toJSONString(userInfo), "NX", "EX",30);
 
-
             result.put("code", BusinessEnum.LOGIN_SUCCESS.getCode().toString());
             result.put("message", BusinessEnum.LOGIN_SUCCESS.getMsg());
             return true;
         }
+    }
+
+    @GetMapping("person-homepage")
+    public String personHomepage(){
+        return "person-homepage";
+    }
+
+    @GetMapping("/person-myfile")
+    public String personMyfile(){
+        return "person-myfile";
     }
 }

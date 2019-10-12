@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yidiandian.dao.FriendshipLinkDao">
+
+    <insert id="batchInsertFriendshipLink">
+      insert into tb_friendship_link(parent_id,url_title,url,is_delete,creator,modifier, create_time,update_time)
+      values
+        <foreach collection="viewList" item="vo" separator=",">
+            (
+            #{vo.parentId},#{vo.urlTitle},#{vo.url},1,
+            #{vo.creator}, #{vo.modifier},now(),now()
+            )
+        </foreach>
+    </insert>
+
+    <select id="findFriendshipLink" resultType="com.yidiandian.entity.FriendshipLink" parameterType="com.yidiandian.view.FriendshipLinkView">
+        select
+         id,parent_id,url_title,url,is_delete,creator,modifier,create_time,update_time
+        from tb_friendship_link where 1 = 1 and is_delete = 1
+        <if test="id != null">
+          and id = #{id}
+        </if>
+        <if test="parentId != null and parentId != ''">
+            and parent_id = #{parentId}
+        </if>
+        <if test="urlTitle != null and urlTitle !=''">
+            and url_title = #{urlTitle}
+        </if>
+        <if test="creator != null">
+            and creator = #{creator}
+        </if>
+        <if test="modifier != null">
+            and modifier = #{modifier}
+        </if>
+
+    </select>
+
+</mapper>
