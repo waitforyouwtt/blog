@@ -43,6 +43,11 @@ mybatis:
   mapper-locations: classpath*:mapper/*Mapper.xml
   type-aliases-package: com.yidiandian.entity
 
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*Mapper.xml
+  type-aliases-package: com.yidiandian.entity
+
 server:
   port: 8081
+
 

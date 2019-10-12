@@ -5,6 +5,7 @@ import com.yidiandian.constant.Constants;
 import com.yidiandian.entity.UserInfo;
 import com.yidiandian.enums.BusinessEnum;
 import com.yidiandian.service.UserInfoService;
+import com.yidiandian.utils.RedisUtils;
 import com.yidiandian.utils.UUIDUtils;
 import com.yidiandian.view.UserInfoView;
 import lombok.extern.slf4j.Slf4j;
@@ -13,14 +14,14 @@ import org.springframework.data.redis.core.BoundHashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Author: 凤凰[小哥哥]
@@ -36,6 +37,19 @@ public class UserInfoController {
 
     @Autowired
     RedisTemplate redisTemplate;
+
+    @Resource
+    RedisUtils redisUtils;
+
+    @GetMapping("/")
+    public String index(){
+        return "toLogin";
+    }
+
+    @GetMapping("/toLogin")
+    public String login(){
+        return "person-loginsign";
+    }
 
     @GetMapping("/login")
     @ResponseBody
@@ -57,6 +71,13 @@ public class UserInfoController {
             response.addCookie(cookie);//返回客户端
             BoundHashOperations<String, Object, Object> boundHashOps = redisTemplate.boundHashOps(Constants.REDIS_USER_KEY);
             boundHashOps.put(uuid, userInfo);
+            redisTemplate.expire(Constants.REDIS_USER_KEY,1, TimeUnit.MINUTES);
+
+            // NX是不存在时才set， XX是存在时才set， EX是秒，PX是毫秒 [文献]: https://www.cnblogs.com/diaozhaojian/p/10516744.html
+            //jedisClient.set(key, value, "NX", "EX", expireSecond);
+            //jedisClient.set(uuid,JSON.toJSONString(userInfo), "NX", "EX",30);
+
+
             result.put("code", BusinessEnum.LOGIN_SUCCESS.getCode().toString());
             result.put("message", BusinessEnum.LOGIN_SUCCESS.getMsg());
             return true;

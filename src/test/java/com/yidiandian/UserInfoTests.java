@@ -24,7 +24,7 @@ public class UserInfoTests extends BlogApplicationTests{
 		UserInfoView view = new UserInfoView();
 		view.setUserName("凤凰小哥哥");
 		view.setNickName("凤凰小哥哥");
-		view.setPassword("wtt19940512577");
+		view.setPassword("577521");
 		view.setAge(18);
 		view.setGender(1);
 		view.setEmail("17621007255@163.com");
@@ -32,6 +32,18 @@ public class UserInfoTests extends BlogApplicationTests{
 		view.setBirthday(DateUtils.strToDateLong(birthday));
 		view.setAddress("河南商丘");
 		UserInfo result = userInfoService.addUserInfo(view);
+		log.info("保存的结果：{}",result);
+
+		UserInfoView view1 = new UserInfoView();
+		view1.setUserName("张洁");
+		view1.setNickName("小胖子凹凸曼");
+		view1.setPassword("577521");
+		view1.setAge(18);
+		view1.setGender(1);
+		view1.setEmail("17621007255@163.com");
+		view1.setBirthday(DateUtils.strToDateLong(birthday));
+		view1.setAddress("河南商丘");
+		UserInfo result1 = userInfoService.addUserInfo(view1);
 		log.info("保存的结果：{}",result);
 	}
 
