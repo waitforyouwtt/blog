@@ -23,7 +23,16 @@ public class LoginInterceptorConfig implements WebMvcConfigurer {
         InterceptorRegistration addInterceptor = registry.addInterceptor(createLoginInterceptor());
        /* addInterceptor.addPathPatterns("/**");*/
         //排除一些访问,不拦截
+        //去登录
         addInterceptor.excludePathPatterns("/toLogin");
+        //[底部链接相关]
+        addInterceptor.excludePathPatterns("/lineAboutWeb");
+        addInterceptor.excludePathPatterns("/linkCommonly");
+        addInterceptor.excludePathPatterns("/linkUS");
+        addInterceptor.excludePathPatterns("/followUS");
+        addInterceptor.excludePathPatterns("/footer");
+
+
         addInterceptor.excludePathPatterns("/login");
         addInterceptor.excludePathPatterns("/toReg");
         addInterceptor.excludePathPatterns("/regSave");

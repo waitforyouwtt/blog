@@ -172,4 +172,15 @@ public class FriendshipLinkTests extends BlogApplicationTests {
         List<FriendshipLinkView> friendshipLink = friendshipLinkService.findFriendshipLink(view);
         log.info("查询到的结果：{}",JSON.toJSON(friendshipLink));
     }
+
+    @Test
+    public void updateById(){
+        FriendshipLinkView view = new FriendshipLinkView();
+        view.setId(5);
+        view.setUrlTitle("收藏我们");
+        view.setIsDelete(1);
+
+        int i = friendshipLinkDao.updateById(view);
+        log.info("修改：{}",i);
+    }
 }

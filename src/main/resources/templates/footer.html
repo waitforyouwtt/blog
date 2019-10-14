@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+  <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ --> 
+  <meta name="description" content="" /> 
+  <meta name="author" content="" /> 
+  <title>底部链接</title>
+  <link rel="stylesheet" type="text/css" href="./dist/css/widget-head-foot.css" />
+ </head> 
+ <body>
+
+  <div class="footer">
+   <div class="wrapper"> 
+    <div class="footer-bottom"> 
+     <div class="link" id="footerLink">
+      <dl>
+       <dt id="aboutWeb">网站相关</dt>
+      </dl>
+      <dl>
+       <dt id="linkCommonly">常用链接</dt>
+      </dl>
+      <dl>
+       <dt id="linkUS">联系我们</dt>
+      </dl>
+      <dl>
+       <dt id="followUS">关注我们</dt>
+      </dl>
+     </div>
+     <div class="xuke" style="margin-left:800px;margin-top:-135px;">
+      <h3 style="font-size: 16px;font-weight: bold;">内容许可</h3>
+      <p>除特别说明外，用户内容均采用知识共享署名-非商业性使用-禁止演绎4.0 国际许可协议 (CC BY-NC-ND 4.0) 进行许可</p>
+      <p>本站由 传智研究院 提供更新服务</p>
+     </div>
+     <p class="Copyright" style="margin-top:30px;">Copyright &copy; 2017 求职季社区 当前版本 0.0.1</p>
+    </div> 
+   </div> 
+  </div>
+ </body>
+</html>
+<script src="./dist/plugins/jquery/dist/jquery.js"></script>
+<script src="./dist/layer/layer.js"></script>
+<script type="text/javascript">
+    $(function () {
+        //网站相关
+        linkAboutWeb();
+        //常用链接
+        linkCommonly();
+        //联系我们
+        linkUS();
+        //关注我们
+        followUS();
+    });
+    //网站相关
+    function linkAboutWeb(){
+        var url = "/lineAboutWeb";
+        $.ajax({
+            url : url,
+            type : 'post',
+            dataType : 'json',
+            data : {},
+            success:function(data){
+                var str = "";
+                for(var i=0;i<data.length;i++){
+                    str += "<dd>" +data[i].urlTitle+"</dd>";
+                }
+                $("#footerLink #aboutWeb").after(str);
+            }
+        });
+    }
+    //常用链接
+    function linkCommonly(){
+        var url = "/linkCommonly";
+        $.ajax({
+            url : url,
+            type : 'post',
+            dataType : 'json',
+            data : {},
+            success:function(data){
+                var str = "";
+                for(var i=0;i<data.length;i++){
+                    str += "<dd>" +data[i].urlTitle+"</dd>";
+                }
+                $("#footerLink #linkCommonly").after(str);
+            }
+        });
+    }
+    //联系我们
+    function linkUS(){
+        var url = "/linkUS";
+        $.ajax({
+            url : url,
+            type : 'post',
+            dataType : 'json',
+            data : {},
+            success:function(data){
+                var str = "";
+                for(var i=0;i<data.length;i++){
+                    str += "<dd>" +data[i].urlTitle+"</dd>";
+                }
+                $("#footerLink #linkUS").after(str);
+            }
+        });
+    }
+    //关注我们
+    function followUS(){
+        var url = "/followUS";
+        $.ajax({
+            url : url,
+            type : 'post',
+            dataType : 'json',
+            data : {},
+            success:function(data){
+                var str = "";
+                for(var i=0;i<data.length;i++){
+                    str += "<dd>" +data[i].urlTitle+"</dd>";
+                }
+                $("#footerLink #followUS").after(str);
+            }
+        });
+    }
+</script>

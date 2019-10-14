@@ -23,4 +23,9 @@ public interface FriendshipLinkService {
      * @return
      */
     List<FriendshipLinkView> findFriendshipLink(FriendshipLinkView view);
+    /**
+     * 修改
+     */
+    int updateById(FriendshipLinkView view);
+
 }

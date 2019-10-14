@@ -22,5 +22,16 @@ public interface FriendshipLinkDao {
      */
     int batchInsertFriendshipLink(@Param("viewList") List<FriendshipLinkView> viewList);
 
+    /**
+     * 根据条件进行查询
+     * @param view
+     * @return
+     */
     List<FriendshipLink> findFriendshipLink(FriendshipLinkView view);
+    /**
+     * 修改
+     * @param view
+     * @return
+     */
+    int updateById (FriendshipLinkView view);
 }

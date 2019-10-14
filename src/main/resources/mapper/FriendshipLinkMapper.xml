@@ -20,7 +20,7 @@
         <if test="id != null">
           and id = #{id}
         </if>
-        <if test="parentId != null and parentId != ''">
+        <if test="parentId != null">
             and parent_id = #{parentId}
         </if>
         <if test="urlTitle != null and urlTitle !=''">
@@ -34,5 +34,27 @@
         </if>
 
     </select>
+
+    <update id="updateById" parameterType="com.yidiandian.view.FriendshipLinkView">
+        update tb_friendship_link
+        <set>
+            <if test="parentId != null">
+                 parent_id = #{parentId},
+            </if>
+            <if test="urlTitle != null and urlTitle !=''">
+                 url_title = #{urlTitle},
+            </if>
+            <if test="creator != null">
+                 creator = #{creator},
+            </if>
+            <if test="modifier != null">
+                 modifier = #{modifier},
+            </if>
+            <if test="isDelete != null">
+                is_delete = #{isDelete},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
 
 </mapper>
