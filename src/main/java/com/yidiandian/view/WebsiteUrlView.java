@@ -1,31 +1,19 @@
+package com.yidiandian.view;
 
-package com.yidiandian.entity;
+import lombok.Data;
 
-import lombok.*;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
 import java.util.Date;
 
 /**
  * @Author: 凤凰[小哥哥]
- * @Date: 2019/10/12 16:30
+ * @Date: 2019/10/14 19:57
  * @Email: 15290810931@163.com
  */
-
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-@Entity
-@Builder
-@EntityListeners(AuditingEntityListener.class)
-@Table(name ="tb_website_url")
-@org.hibernate.annotations.Table(appliesTo = "tb_website_url",comment="网站业务url信息表")
-public class WebsiteUrl{
+public class WebsiteUrlView {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @SequenceGenerator(name = "id", sequenceName = "id", allocationSize=1)
     private Integer id;
 
     @Basic
@@ -75,6 +63,4 @@ public class WebsiteUrl{
     @Basic
     @Column(name = "update_time",columnDefinition="datetime COMMENT '修改时间'")
     private Date updateTime;
-
 }
-

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yidiandian.dao.WebsiteUrlDao">
+
+    <select id="findWebsiteUrl" resultType="com.yidiandian.entity.WebsiteUrl" parameterType="com.yidiandian.view.WebsiteUrlView">
+        select id,plate_id,plate,parent_id,url_title,url,sort_id,plate_delete,is_delete,creator,modifier,create_time,update_time
+        from tb_website_url where 1 = 1 and plate_delete = 1 and is_delete = 1
+        <if test="id != null">
+          and id = #{id}
+        </if>
+        <if test="parentId != null">
+            and parent_id = #{parentId}
+        </if>
+        <if test="plateId != null">
+            and plate_id = #{plateId}
+        </if>
+        <if test="urlTitle != null and urlTitle !=''">
+            and url_title = #{urlTitle}
+        </if>
+        <if test="creator != null">
+            and creator = #{creator}
+        </if>
+        <if test="modifier != null">
+            and modifier = #{modifier}
+        </if>
+    </select>
+
+</mapper>

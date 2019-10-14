@@ -18,6 +18,7 @@ public class IndexController {
         return "headline-logined";
     }
 
+    //底部url链接显示
     @GetMapping("/footer")
     public String footer(){
         return "footer";
