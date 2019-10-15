@@ -66,8 +66,8 @@ public class WebsiteUrlTests extends BlogApplicationTests {
     @Test
     public void findWebsiteUrl(){
         WebsiteUrlView view = new WebsiteUrlView();
-        view.setUrlTitle("我的提问");
+        view.setSortDesc("ASC");
         List<WebsiteUrlView> websiteUrl = websiteUrlService.getWebsiteUrl(view);
-        log.info("查询返回的结果：{}",websiteUrl);
+        log.info("查询返回的结果：{}",JSON.toJSON(websiteUrl));
     }
 }

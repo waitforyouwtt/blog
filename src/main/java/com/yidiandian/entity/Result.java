@@ -30,21 +30,21 @@ public class Result<T> {
     public static <T> Result<T> success(T data) {
         Result<T> response = new Result();
         response.setCode(SystemCodeEnum.OK.getCode());
-        response.setMessage(SystemCodeEnum.OK.getMessage());
+        response.setMessage(SystemCodeEnum.OK.getMsg());
         response.setData(data);
         return response;
     }
     public static <T> Result<T> success() {
         Result<T> response = new Result();
         response.setCode(SystemCodeEnum.OK.getCode());
-        response.setMessage(SystemCodeEnum.OK.getMessage());
+        response.setMessage(SystemCodeEnum.OK.getMsg());
         response.setData(null);
         return response;
     }
     public static <T> Result<T> error(T data) {
         Result<T> response = new Result();
         response.setCode(SystemCodeEnum.ERROR.getCode());
-        response.setMessage(SystemCodeEnum.ERROR.getMessage());
+        response.setMessage(SystemCodeEnum.ERROR.getMsg());
         response.setData(data);
         return response;
     }
@@ -52,7 +52,7 @@ public class Result<T> {
     public static <T> Result<T> error() {
         Result<T> response = new Result();
         response.setCode(SystemCodeEnum.ERROR.getCode());
-        response.setMessage(SystemCodeEnum.ERROR.getMessage());
+        response.setMessage(SystemCodeEnum.ERROR.getMsg());
         response.setData(null);
         return response;
     }

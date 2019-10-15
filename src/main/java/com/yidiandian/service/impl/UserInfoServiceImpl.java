@@ -3,7 +3,7 @@ package com.yidiandian.service.impl;
 import com.yidiandian.constant.Constants;
 import com.yidiandian.dao.UserInfoDao;
 import com.yidiandian.entity.UserInfo;
-import com.yidiandian.enums.SystemCodeEnum;
+import com.yidiandian.enums.BusinessEnum;
 import com.yidiandian.exceptions.MyException;
 import com.yidiandian.jpa.UserInfoMapper;
 import com.yidiandian.service.UserInfoService;
@@ -56,7 +56,7 @@ public class UserInfoServiceImpl implements UserInfoService {
             result = userInfoMapper.save(userInfo);
         }catch (Exception e){
             log.info("添加用户信息异常：{}",e.getMessage());
-            throw new MyException(SystemCodeEnum.ADD_USERINFO_EXCEPTION.getCode(),SystemCodeEnum.ADD_USERINFO_EXCEPTION.getMessage());
+            throw new MyException(BusinessEnum.ADD_ERROR.getCode(),BusinessEnum.ADD_ERROR.getMsg());
         }
         return result;
     }
@@ -72,7 +72,7 @@ public class UserInfoServiceImpl implements UserInfoService {
         UserInfo userInfo = null;
         if (StringUtils.isBlank(userInfoView.getUserName()) && StringUtils.isBlank(userInfoView.getNickName()) &&
         StringUtils.isBlank(userInfoView.getMobile()) && StringUtils.isBlank(userInfoView.getEmail())){
-            throw new MyException(SystemCodeEnum.PARAMS_NOT_POINT.getCode(),SystemCodeEnum.PARAMS_NOT_POINT.getMessage());
+            throw new MyException(BusinessEnum.PARAMS_NOT_POINT.getCode(),BusinessEnum.PARAMS_NOT_POINT.getMsg());
         }
         if (StringUtils.isNoneBlank(userInfoView.getUserName()) && StringUtils.isNoneBlank(userInfoView.getPassword())){
             userInfo = findByUserName(userInfoView.getUserName(),userInfoView.getPassword());
@@ -130,11 +130,11 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Override
     public int updateUserInfo(UserInfoView userInfoView) {
         if (StringUtils.isBlank(userInfoView.getUserId())){
-            throw new MyException(SystemCodeEnum.PARAMS_NOT_POINT.getCode(),SystemCodeEnum.PARAMS_NOT_POINT.getMessage());
+            throw new MyException(BusinessEnum.PARAMS_NOT_POINT.getCode(),BusinessEnum.PARAMS_NOT_POINT.getMsg());
         }
         Optional<UserInfo> optional = userInfoMapper.findById(userInfoView.getId());
         if (!optional.isPresent()){
-            throw new MyException(SystemCodeEnum.RECORD_IS_NOT_EXIST.getCode(),SystemCodeEnum.RECORD_IS_NOT_EXIST.getMessage());
+            throw new MyException(BusinessEnum.RECORD_IS_NOT_EXIST.getCode(),BusinessEnum.RECORD_IS_NOT_EXIST.getMsg());
         }
         UserInfo userInfo = new UserInfo();
         BeanCopier beanCopier = BeanCopier.create(UserInfoView.class, UserInfo.class, false);
@@ -151,13 +151,13 @@ public class UserInfoServiceImpl implements UserInfoService {
     public int changePassword(UserInfoView userInfoView) {
         Optional<UserInfo> optional = userInfoMapper.findByNickNameAndPassword(userInfoView.getNickName(),AesUtil.encrypt(Constants.SECRET_KEY,userInfoView.getOldPassword()));
         if (!optional.isPresent()){
-            throw new MyException(SystemCodeEnum.PASSWORD_ERROR.getCode(),SystemCodeEnum.PASSWORD_ERROR.getMessage());
+            throw new MyException(BusinessEnum.LOGIN_ERROR.getCode(),BusinessEnum.LOGIN_ERROR.getMsg());
         }
         UserInfo queryUserInfo = optional.get();
         String password = AesUtil.encrypt(Constants.SECRET_KEY,userInfoView.getPassword());
         String oldPassword = AesUtil.encrypt(Constants.SECRET_KEY,queryUserInfo.getPassword());
         if (password.equals(oldPassword)){
-            throw new MyException(SystemCodeEnum.PASSWORD_EQUAL.getCode(),SystemCodeEnum.PASSWORD_EQUAL.getMessage());
+            throw new MyException(BusinessEnum.PASSWORD_EQUAL.getCode(),BusinessEnum.PASSWORD_EQUAL.getMsg());
         }
         UserInfo userInfo = new UserInfo();
         BeanCopier beanCopier = BeanCopier.create(UserInfoView.class, UserInfo.class, false);

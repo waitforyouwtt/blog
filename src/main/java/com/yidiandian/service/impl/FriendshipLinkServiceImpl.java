@@ -3,8 +3,8 @@ package com.yidiandian.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.yidiandian.dao.FriendshipLinkDao;
 import com.yidiandian.entity.FriendshipLink;
+import com.yidiandian.enums.BusinessEnum;
 import com.yidiandian.enums.DeleteEnum;
-import com.yidiandian.enums.SystemCodeEnum;
 import com.yidiandian.exceptions.MyException;
 import com.yidiandian.service.FriendshipLinkService;
 import com.yidiandian.view.FriendshipLinkView;
@@ -12,7 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +36,7 @@ public class FriendshipLinkServiceImpl implements FriendshipLinkService {
     @Override
     public int batchInsertFriendshipLink(List<FriendshipLinkView> views) {
         if (CollectionUtils.isEmpty(views)){
-            throw new MyException(SystemCodeEnum.PARAMS_NOT_POINT.getCode(),SystemCodeEnum.PARAMS_NOT_POINT.getMessage());
+            throw new MyException(BusinessEnum.PARAMS_NOT_POINT.getCode(),BusinessEnum.PARAMS_NOT_POINT.getMsg());
         }
         return friendshipLinkDao.batchInsertFriendshipLink(views);
     }
@@ -69,7 +68,7 @@ public class FriendshipLinkServiceImpl implements FriendshipLinkService {
     @Override
     public int updateById(FriendshipLinkView view) {
         if (view.getId().toString() == null){
-            throw new MyException(SystemCodeEnum.PARAMS_NOT_POINT.getCode(),SystemCodeEnum.PARAMS_NOT_POINT.getMessage());
+            throw new MyException(BusinessEnum.PARAMS_NOT_POINT.getCode(),BusinessEnum.PARAMS_NOT_POINT.getMsg());
         }
         log.info("update接收到的参数：{}",JSON.toJSON(view));
         return friendshipLinkDao.updateById(view);

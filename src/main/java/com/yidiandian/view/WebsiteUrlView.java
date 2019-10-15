@@ -41,6 +41,10 @@ public class WebsiteUrlView {
     private Integer sortId;
 
     @Basic
+    @Column(name = "sort_desc",columnDefinition="int(11) COMMENT '排序描述'")
+    private String sortDesc;
+
+    @Basic
     @Column(name = "plate_delete",columnDefinition="int(11) COMMENT '板块是否删除 1 未删除 2 已删除'")
     private Integer plateDelete;
 

@@ -23,6 +23,9 @@
         <if test="modifier != null">
             and modifier = #{modifier}
         </if>
+        <if test="sortDesc != null">
+            order by sort_id ${sortDesc};
+        </if>
     </select>
 
 </mapper>

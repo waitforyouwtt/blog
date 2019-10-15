@@ -1,25 +1,23 @@
 package com.yidiandian.enums;
 
 /**
- * @Author: luoxian
- * @Date: 2019/5/21 17:21
+ * @Author: 凤凰[小哥哥]
+ * @Date: 2019/10/15 10:19
+ * @Email: 15290810931@163.com
  */
-public enum SystemCodeEnum {
+public enum  SortDescEnum {
 
-    OK(200,"成功"),
-    ERROR(201,"失败"),
-    ACCESS_ERROR(2003,"权限不足"),
-    EXCEPTION(500,"系统异常"),
+    ASC(1,"ASC"),
+    DESC(2,"DESC");
 
-    ;
+    private Integer code;
 
-    SystemCodeEnum(Integer code, String msg) {
+    private String msg;
+
+    SortDescEnum(Integer code, String msg) {
         this.code = code;
         this.msg = msg;
     }
-
-    private Integer code;
-    private String  msg;
 
     public Integer getCode() {
         return code;

@@ -22,7 +22,7 @@ public class ExceptionAdvice {
         Result result = new Result();
         result.setFlag(false);
         result.setCode(SystemCodeEnum.EXCEPTION.getCode());
-        result.setMessage(SystemCodeEnum.EXCEPTION.getMessage());
+        result.setMessage(SystemCodeEnum.EXCEPTION.getMsg());
         result.setData(null);
         return result;
     }
@@ -37,7 +37,7 @@ public class ExceptionAdvice {
             code = SystemCodeEnum.EXCEPTION.getCode();
         }
         if (e.getMessage() == null){
-            msg = SystemCodeEnum.EXCEPTION.getMessage();
+            msg = SystemCodeEnum.EXCEPTION.getMsg();
         }
         Result result = new Result();
         result.setFlag(false);
