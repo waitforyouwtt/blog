@@ -41,6 +41,14 @@ public class UserInfo implements Serializable {
     private String nickName;
 
     @Basic
+    @Column(name = "head_image",columnDefinition="varchar(255) COMMENT '用户头像'")
+    private String headImage;
+
+    @Basic
+    @Column(name = "family_phone",columnDefinition="varchar(25) COMMENT '家庭联系电话'")
+    private String familyPhone;
+
+    @Basic
     @Column(name = "mobile",columnDefinition="varchar(25) COMMENT '用户手机号'")
     private String mobile;
 
@@ -61,12 +69,28 @@ public class UserInfo implements Serializable {
     private Integer gender;
 
     @Basic
-    @Column(name = "address",columnDefinition="varchar(200) COMMENT '用户地址'")
-    private String address;
+    @Column(name = "temporary_residence",columnDefinition="varchar(200) COMMENT '暂住地'")
+    private String temporaryResidence;
+
+    @Basic
+    @Column(name = "permanent_residence",columnDefinition="varchar(200) COMMENT '户口所在地'")
+    private String permanentResidence;
+
+    @Basic
+    @Column(name = "work_residence",columnDefinition="varchar(200) COMMENT '工作所在地'")
+    private String workResidence;
 
     @Basic
     @Column(name = "email",columnDefinition="varchar(200) COMMENT '电子邮件'")
     private String email;
+
+    @Basic
+    @Column(name = "we_chat",columnDefinition="varchar(200) COMMENT '微信'")
+    private String weChat;
+
+    @Basic
+    @Column(name = "qq",columnDefinition="varchar(200) COMMENT '腾讯qq'")
+    private String qq;
 
     @Basic
     @Column(name = "is_delete",columnDefinition="int(11) COMMENT '是否删除 1 未删除 2 已删除'")

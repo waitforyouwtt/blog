@@ -43,6 +43,7 @@ public class LoginInterceptorConfig implements WebMvcConfigurer {
         addInterceptor.excludePathPatterns("/dist/data/*.json");
         addInterceptor.excludePathPatterns("/dist/img/*.png");
         addInterceptor.excludePathPatterns("/dist/layer/*.js");
+        addInterceptor.excludePathPatterns("/dist/js/*.js");
         addInterceptor.excludePathPatterns("/dist/layer/mobile/need/*.css");
         addInterceptor.excludePathPatterns("/dist/layer/theme/default/*.png");
         addInterceptor.excludePathPatterns("/dist/layer/theme/default/*.css");

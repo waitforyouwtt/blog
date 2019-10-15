@@ -4,12 +4,14 @@ import com.alibaba.fastjson.JSON;
 import com.yidiandian.constant.Constants;
 import com.yidiandian.entity.WebsiteUrl;
 import com.yidiandian.service.WebsiteUrlService;
+import com.yidiandian.utils.DateUtils;
 import com.yidiandian.view.WebsiteUrlView;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -69,5 +71,12 @@ public class WebsiteUrlTests extends BlogApplicationTests {
         view.setSortDesc("ASC");
         List<WebsiteUrlView> websiteUrl = websiteUrlService.getWebsiteUrl(view);
         log.info("查询返回的结果：{}",JSON.toJSON(websiteUrl));
+    }
+
+    @Test
+    public void diyDate(){
+        String s = DateUtils.diyDate(new Date(), 5);
+        log.info("s:{}",s);
+
     }
 }

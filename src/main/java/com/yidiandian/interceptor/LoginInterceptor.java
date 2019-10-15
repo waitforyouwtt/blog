@@ -49,13 +49,6 @@ public class LoginInterceptor implements HandlerInterceptor {
         BoundHashOperations<String,Object,Object> boundHashOps = redisTemplate.boundHashOps(Constants.REDIS_USER_KEY);
         Long expire = redisTemplate.getExpire(struuid);
         log.info("过期时间：{}",expire);
-      /*  if (expire < 0 ){
-            log.info("redis token 已过期");
-            Boolean delete = redisTemplate.delete(struuid);
-            log.info("删除过期的token：{}",delete);
-            response.sendRedirect("/toLogin");
-            return false;
-        }*/
         UserInfo user = (UserInfo) boundHashOps.get(struuid);
         if (user == null ){
             log.info("redis未获取到 token");

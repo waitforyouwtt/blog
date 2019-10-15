@@ -17,4 +17,7 @@ public class Constants {
    public static final String REDIS_USER_KEY="loginKey";
 
    public static final String ADMIN = "Admin";
+
+   //过期时间
+   public static final Integer expire = 30;
 }

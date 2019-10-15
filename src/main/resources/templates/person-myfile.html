@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
  <head> 
   <meta charset="utf-8" /> 
   <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
@@ -68,7 +68,7 @@
      </div> 
      <!--文字信息--> 
      <div class="info"> 
-      <h1>Web爱好者<span class="allinfo"><a href="./person-myfile.html" target="_blank">查看完整档案</a></span></h1> 
+      <h1>Web爱好者<span class="allinfo"><a href="./person-myfile" target="_blank">查看完整档案</a></span></h1>
       <ul class="fill"> 
        <li> <i class="fa fa-map-marker" aria-hidden="true"></i> <span class="edit-item"> 填写现居城市</span> 
         <form action="" class="sui-form form-inline"> 
@@ -165,17 +165,7 @@ $(function(){
     <div class="sidebar"> 
      <div class="myhome-list"> 
       <ul class="home-list"> 
-       <li class="active"><a href="./person-homepage.html">我的主页</a></li> 
-       <li><a href="./person-myanswer.html">我的回答</a></li> 
-       <li><a href="./person-myquestion.html">我的提问</a></li> 
-       <li><a href="./person-myshare.html">我的分享</a></li> 
-      </ul> 
-      <ul class="home-list bottom"> 
-       <li><a href="./person-dynamic.html">个人动态</a></li> 
-       <li><a href="./person-myfocus.html">我的关注</a></li> 
-       <li><a href="./person-mycollect.html">我的收藏</a></li> 
-       <li><a href="./person-myreaded.html">浏览记录</a></li> 
-       <li><a href="./person-account.html">账户设置</a></li> 
+
       </ul> 
      </div> 
      <!-- <script>
@@ -198,24 +188,24 @@ $(function(){
          <img src="./dist/img/widget-o-photo.png" alt="" />
         </div> 
         <div class="span4 item"> 
-         <h3 class="name">真人姓名</h3> 
-         <p>暂无</p> 
+         <h3 class="name">真人姓名</h3>
+         <p th:text="${userInfo.userName}"></p>
          <h3 class="name">出生日期</h3> 
-         <p>暂无</p> 
+         <p th:text="${userInfo.birthdayDesc}"></p>
          <h3 class="name">手机号码</h3> 
-         <p>暂无</p> 
+         <p th:text="${userInfo.mobile}"></p>
          <h3 class="name">现居城市</h3> 
-         <p>暂无</p> 
+         <p th:text="${userInfo.temporaryResidence}"></p>
         </div> 
         <div class="span3 item"> 
          <h3 class="name">性别</h3> 
-         <p>暂无</p> 
+         <p th:text="${userInfo.genderDesc}"></p>
          <h3 class="name">个人网站</h3> 
-         <p>暂无</p> 
+         <p th:text="${userInfo.email}"></p>
          <h3 class="name">Email</h3> 
-         <p>暂无</p> 
+         <p th:text="${userInfo.email}"></p>
          <h3 class="name">通讯地址</h3> 
-         <p>暂无</p> 
+         <p th:text="${userInfo.permanentResidence}"></p>
         </div> 
         <div class="span1 edit"> 
          <span class="gray"><i class="fa fa-pencil" aria-hidden="true"></i> 编辑</span> 
@@ -477,3 +467,7 @@ $(function(){
   </div> 
  </body>
 </html>
+
+<script src="./dist/plugins/jquery/dist/jquery.js"></script>
+<script src="./dist/layer/layer.js"></script>
+<script src="./dist/js/extract.js"></script>

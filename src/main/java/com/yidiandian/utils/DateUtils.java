@@ -165,6 +165,8 @@ public class DateUtils {
             format = new SimpleDateFormat(DateFormatEnum.YYYY_MM_DD_HH_MM_SS.getMsg());
         }else if (intFormat == DateFormatEnum.YY_MM_DD_HH_MM_SS.getCode()){
             format = new SimpleDateFormat(DateFormatEnum.YY_MM_DD_HH_MM_SS.getMsg());
+        }else if(intFormat == DateFormatEnum.YY_MM_DD.getCode()){
+            format = new SimpleDateFormat(DateFormatEnum.YY_MM_DD.getMsg());
         }else{
             throw new IllegalArgumentException("Parameter error");
         }

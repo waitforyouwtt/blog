@@ -21,8 +21,20 @@
             <if test="gender != null">
                 gender = #{gender},
             </if>
-            <if test="address != null">
-                address = #{address},
+            <if test="temporaryResidence != null">
+                temporary_residence = #{temporaryResidence},
+            </if>
+            <if test="permanentResidence != null">
+                permanent_residence = #{permanentResidence},
+            </if>
+            <if test="workResidence != null">
+                work_residence = #{workResidence},
+            </if>
+            <if test="weChat != null">
+                we_chat = #{weChat},
+            </if>
+            <if test="qq != null">
+                qq = #{qq},
             </if>
             <if test="email != null">
                 email = #{email},

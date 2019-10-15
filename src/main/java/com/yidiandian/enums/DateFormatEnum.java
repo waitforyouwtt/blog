@@ -9,7 +9,8 @@ public enum DateFormatEnum {
     BLANK_FORMAT(1,"yyyy MM dd hh mm ss"),
     YYYY_MM_DD_HH_MM_SS(2,"yyyy-MM-dd hh:mm:ss"),
     YY_MM_DD_HH_MM_SS(3,"yyyy/MM/dd hh:mm:ss"),
-    YY_MM_DD_HH_MM_SS2(4,"MMddHHmmss");
+    YY_MM_DD_HH_MM_SS2(4,"MMddHHmmss"),
+    YY_MM_DD(5,"yyyy-MM-dd");
 
     private Integer code;
     private String msg;
