@@ -21,4 +21,7 @@ public class Constants {
    //过期时间
    public static final Integer expire = 30;
 
+   //作者
+   public static final String author = "凤凰小哥哥";
+
 }
