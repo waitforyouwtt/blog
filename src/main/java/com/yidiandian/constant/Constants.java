@@ -20,4 +20,5 @@ public class Constants {
 
    //过期时间
    public static final Integer expire = 30;
+
 }
