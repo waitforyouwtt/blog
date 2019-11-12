@@ -76,7 +76,7 @@ public class UserInfoTests extends BlogApplicationTests{
 		log.info("查询得到的用户信息：{}",userInfo);
 	}
 
-	@Test
+/*	@Test
 	public void updateUserTest(){
       UserInfoView view = new UserInfoView();
       view.setId(1);
@@ -85,6 +85,6 @@ public class UserInfoTests extends BlogApplicationTests{
       view.setOldPassword("577521");
       int update = userInfoService.changePassword(view);
       log.info("修改的结果：{}",update);
-	}
+	}*/
 
 }

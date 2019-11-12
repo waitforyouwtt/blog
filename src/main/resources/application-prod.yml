@@ -1,1 +1,72 @@
-server.port=8081
+#指定 mysql jdbc 的数据库连接配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://cdb-9dv88oee.bj.tencentcdb.com:10145/lx_blog?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&allowMultiQueries=true
+    username: luoxian
+    password: luoxian123
+
+
+ #指定spring data jpa 的表配置[update],及显示sql
+  jpa:
+      hibernate:
+        ddl-auto: update
+        #配合database-platform 创建表默认的存储引擎为MyISam ,修改为 innodb
+        naming:
+          physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+      show-sql: true
+      database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+
+#指定redis 的相关配置
+  redis:
+    host: 60.205.191.70
+    port: 6379
+    password: lingruan666
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 500
+
+#指定页面模板的路径及编码
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+    cache: false
+
+#指定发送邮件的相关配置[项目采用qq 邮箱]
+  mail:
+    default-encoding: UTF-8
+    host: smtp.qq.com
+    protocol: smtp
+    username: 1140867582@qq.com
+    password: cxvyyyphryozhjfe
+
+  smtp:
+    auth: true
+    starttls:
+      enable: true
+      required: true
+
+#指定mybatis 的mapper 关联的xml 的路径
+mybatis:
+  mapper-locations: classpath*:mapper/*Mapper.xml
+  type-aliases-package: com.yidiandian.entity
+
+#指定mybatis plus 的mapper 关联的xml 的路径
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*Mapper.xml
+  type-aliases-package: com.yidiandian.entity
+
+#spring boot mybatis 打印sql及参数：level 下面是dao 层的包路径哦
+logging:
+  level:
+   com:
+    yidiandian:
+      dao: debug
+
+#指定服务的端口号
+server:
+  port: 7101
