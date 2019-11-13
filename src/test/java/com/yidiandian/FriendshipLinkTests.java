@@ -34,40 +34,41 @@ public class FriendshipLinkTests extends BlogApplicationTests {
         FriendshipLinkView view0 = new FriendshipLinkView();
         view0.setParentId(0);
         view0.setUrlTitle("网站相关");
-        view0.setUrl("https://www.baidu.com");
+        view0.setUrl("https://about.website.com");
         view0.setCreator(Constants.ADMIN);
         view0.setModifier(Constants.ADMIN);
 
         FriendshipLinkView view1 = new FriendshipLinkView();
         view1.setParentId(0);
         view1.setUrlTitle("常用链接");
-        view1.setUrl("https://www.baidu.com");
+        view1.setUrl("https://often.url.com");
         view1.setCreator(Constants.ADMIN);
         view1.setModifier(Constants.ADMIN);
 
         FriendshipLinkView view2 = new FriendshipLinkView();
         view2.setParentId(0);
         view2.setUrlTitle("联系我们");
-        view2.setUrl("https://www.baidu.com");
+        view2.setUrl("https://www.contact.us.com");
         view2.setCreator(Constants.ADMIN);
         view2.setModifier(Constants.ADMIN);
 
         FriendshipLinkView view3 = new FriendshipLinkView();
         view3.setParentId(0);
         view3.setUrlTitle("关注我们");
-        view3.setUrl("https://www.baidu.com");
+        view3.setUrl("https://www.follow.us.com");
         view3.setCreator(Constants.ADMIN);
         view3.setModifier(Constants.ADMIN);
 
         FriendshipLinkView view4 = new FriendshipLinkView();
         view4.setParentId(0);
         view4.setUrlTitle("内容许可");
-        view4.setUrl("https://www.baidu.com");
+        view4.setUrl("https://www.content.ok.com");
         view4.setCreator(Constants.ADMIN);
         view4.setModifier(Constants.ADMIN);
+
         views.add(view0);views.add(view1);
         views.add(view2);views.add(view3);
-        views.add(view3);views.add(view4);
+        views.add(view4);
         log.info("批量添加的参数：{}",JSON.toJSON(views));
         int i = friendshipLinkDao.batchInsertFriendshipLink(views);
         log.info("返回的结果：{}", JSON.toJSON(i));
@@ -79,7 +80,7 @@ public class FriendshipLinkTests extends BlogApplicationTests {
         FriendshipLinkView view0 = new FriendshipLinkView();
         view0.setParentId(1);
         view0.setUrlTitle("关于我们");
-        view0.setUrl("https://about-we.com");
+        view0.setUrl("https://about-us.com");
         view0.setCreator(Constants.ADMIN);
         view0.setModifier(Constants.ADMIN);
 
@@ -91,7 +92,7 @@ public class FriendshipLinkTests extends BlogApplicationTests {
         view1.setModifier(Constants.ADMIN);
 
         FriendshipLinkView view2 = new FriendshipLinkView();
-        view2.setParentId(0);
+        view2.setParentId(1);
         view2.setUrlTitle("帮助中心");
         view2.setUrl("https://help-center.com");
         view2.setCreator(Constants.ADMIN);
@@ -99,29 +100,29 @@ public class FriendshipLinkTests extends BlogApplicationTests {
 
         FriendshipLinkView view3 = new FriendshipLinkView();
         view3.setParentId(2);
-        view3.setUrlTitle("传智博客");
-        view3.setUrl("https://www.chuanzhi-csdn.com");
+        view3.setUrlTitle("blog博客");
+        view3.setUrl("https://www.blog-csdn.com");
         view3.setCreator(Constants.ADMIN);
         view3.setModifier(Constants.ADMIN);
 
         FriendshipLinkView view4 = new FriendshipLinkView();
         view4.setParentId(2);
-        view4.setUrlTitle("传智论坛");
-        view4.setUrl("https://www.chuanzhi-luntan.com");
+        view4.setUrlTitle("blog论坛");
+        view4.setUrl("https://www.blog-talk.com");
         view4.setCreator(Constants.ADMIN);
         view4.setModifier(Constants.ADMIN);
 
         FriendshipLinkView view5 = new FriendshipLinkView();
         view5.setParentId(3);
-        view5.setUrlTitle("联系我们");
-        view5.setUrl("https://www.call-we.com");
+        view5.setUrlTitle("CALL US");
+        view5.setUrl("https://www.call-us.com");
         view5.setCreator(Constants.ADMIN);
         view5.setModifier(Constants.ADMIN);
 
         FriendshipLinkView view6 = new FriendshipLinkView();
         view6.setParentId(3);
         view6.setUrlTitle("加入我们");
-        view6.setUrl("https://www.join-we.com");
+        view6.setUrl("https://www.join-us.com");
         view6.setCreator(Constants.ADMIN);
         view6.setModifier(Constants.ADMIN);
 
@@ -155,7 +156,7 @@ public class FriendshipLinkTests extends BlogApplicationTests {
 
         views.add(view0);views.add(view1);
         views.add(view2);views.add(view3);
-        views.add(view3);views.add(view4);
+        views.add(view4);
         views.add(view5);views.add(view6);
         views.add(view7);views.add(view8);
         views.add(view9);views.add(view10);

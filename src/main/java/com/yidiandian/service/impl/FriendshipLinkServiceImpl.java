@@ -15,6 +15,7 @@ import org.springframework.util.CollectionUtils;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @Author: 凤凰[小哥哥]
@@ -52,7 +53,7 @@ public class FriendshipLinkServiceImpl implements FriendshipLinkService {
         log.info("查询接受的参数是：{}", JSON.toJSON(view));
         List<FriendshipLinkView> views = new ArrayList<>();
         view.setIsDelete(DeleteEnum.NORMAL.getCode());
-        List<FriendshipLink> friendshipLinks = friendshipLinkDao.findFriendshipLink(view);
+        List<FriendshipLink> friendshipLinks = friendshipLinkDao.findFriendshipLink(view).stream().distinct().collect(Collectors.toList());
         if (CollectionUtils.isEmpty(friendshipLinks)){
             return null;
         }

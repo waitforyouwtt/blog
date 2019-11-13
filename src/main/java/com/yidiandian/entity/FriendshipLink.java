@@ -33,16 +33,21 @@ public class FriendshipLink implements Serializable{
     private Integer parentId;
 
     @Basic
-    @Column(name = "url_title",columnDefinition="varchar(200) COMMENT 'url名字'")
+    @Column(name = "url_title",columnDefinition="varchar(200) COMMENT 'url名字'",unique = true)
     private String urlTitle;
 
     @Basic
-    @Column(name = "url",columnDefinition="varchar(200) COMMENT 'url链接'")
+    @Column(name = "url",columnDefinition="varchar(200) COMMENT 'url链接'",unique = true)
     private String url;
 
     @Basic
     @Column(name = "is_delete",columnDefinition="int(11) COMMENT '是否删除 1 未删除 2 已删除'")
     private Integer isDelete;
+
+    @Basic
+    @Column(name = "status",columnDefinition="int(11) COMMENT '是否删除 1 有效 2 失效'")
+    private Integer status;
+
 
     @Basic
     @Column(name = "creator",columnDefinition="varchar(100) COMMENT '创建人'")

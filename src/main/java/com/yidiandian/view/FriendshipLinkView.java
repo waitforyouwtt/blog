@@ -34,6 +34,10 @@ public class FriendshipLinkView implements Serializable {
     private Integer isDelete;
 
     @Basic
+    @Column(name = "status",columnDefinition="int(11) COMMENT '是否删除 1 有效 2 失效'")
+    private Integer status;
+
+    @Basic
     @Column(name = "creator",columnDefinition="varchar(100) COMMENT '创建人'")
     private String creator;
 
