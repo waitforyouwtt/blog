@@ -28,4 +28,16 @@
         </if>
     </select>
 
+    <insert id="batchInsertWebsiteUrl">
+        insert into tb_website_url(plate_id,plate,parent_id,url_title,url,sort_id,
+        plate_delete,is_delete,creator,modifier,create_time,update_time)
+        values
+        <foreach collection="viewList" item="vo" separator=",">
+            (
+            #{vo.plateId},#{vo.plate},#{vo.parentId},#{vo.urlTitle},#{vo.url},#{vo.sortId},
+            1,1,#{vo.creator}, #{vo.modifier},now(),now()
+            )
+        </foreach>
+    </insert>
+
 </mapper>

@@ -3,6 +3,7 @@ package com.yidiandian.dao;
 import com.yidiandian.entity.WebsiteUrl;
 import com.yidiandian.view.WebsiteUrlView;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -15,4 +16,11 @@ import java.util.List;
 public interface WebsiteUrlDao {
 
     List<WebsiteUrl> findWebsiteUrl(WebsiteUrlView view);
+
+    /**
+     * 批量添加
+     * @param views
+     * @return
+     */
+    int batchInsertWebsiteUrl(@Param("viewList") List<WebsiteUrlView> views);
 }

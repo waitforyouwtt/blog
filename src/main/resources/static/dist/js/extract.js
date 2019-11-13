@@ -1,5 +1,18 @@
 $(function(){
     loadMyHomepageurls();
+
+    //鼠标移动事件
+    $(".hover").hover(function(){
+        $(".hoverinfo").stop().animate({
+            opacity: "show"
+        },"slow");
+        $(this).find(".fa-plus").css("color","#e64620");
+    },function(){
+        $(".hoverinfo").stop().animate({
+            opacity: "hide"
+        },"slow");
+        $(this).find(".fa-plus").css("color","#000");
+    });
 });
 
 function loadMyHomepageurls(){

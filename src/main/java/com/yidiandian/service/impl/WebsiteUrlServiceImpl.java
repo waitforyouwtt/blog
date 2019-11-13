@@ -20,6 +20,7 @@ import org.springframework.util.StringUtils;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @Author: 凤凰[小哥哥]
@@ -54,6 +55,20 @@ public class WebsiteUrlServiceImpl implements WebsiteUrlService {
     }
 
     /**
+     * 批量添加
+     *
+     * @param views
+     * @return
+     */
+    @Override
+    public int batchInsertWebsiteUrl(List<WebsiteUrlView> views) {
+        if (CollectionUtils.isEmpty(views)){
+            throw new MyException(BusinessEnum.PARAMS_NOT_POINT.getCode(),BusinessEnum.PARAMS_NOT_POINT.getMsg());
+        }
+        return websiteUrlDao.batchInsertWebsiteUrl(views);
+    }
+
+    /**
      * 根据条件查询业务url 连接
      *
      * @param view
@@ -68,7 +83,7 @@ public class WebsiteUrlServiceImpl implements WebsiteUrlService {
                 throw new MyException(BusinessEnum.PARAMS_NOT_POINT.getCode(),BusinessEnum.PARAMS_NOT_POINT.getMsg());
             }
         }
-        List<WebsiteUrl> websiteUrls = websiteUrlDao.findWebsiteUrl(view);
+        List<WebsiteUrl> websiteUrls = websiteUrlDao.findWebsiteUrl(view).stream().distinct().collect(Collectors.toList());
         if (CollectionUtils.isEmpty(websiteUrls)){
             return null;
         }

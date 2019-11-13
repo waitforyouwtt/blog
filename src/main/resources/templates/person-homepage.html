@@ -25,7 +25,7 @@
    <header> 
     <div class="sui-navbar"> 
      <div class="navbar-inner"> 
-      <a href="index-logined.html" class="sui-brand"><img src="./dist/img/asset-logo-black.png" alt="社交" /></a>
+      <a href="javaScript:void(0);" class="sui-brand"><img src="./dist/img/asset-logo-black.png" alt="社交" /></a>
       <ul class="sui-nav"> 
        <li class="active"><a href="./headline-logined.html">头条</a></li> 
        <li><a href="./qa-logined.html">问答</a></li> 
@@ -112,6 +112,7 @@
    <div class="left-list"> 
     <div class="myhome-list"> 
      <ul class="home-list">
+
      </ul> 
     </div> 
    </div> 
@@ -119,7 +120,8 @@
     <div class="home-content"> 
      <ul class="sui-nav nav-tabs nav-large"> 
       <li class="active"><a href="#one" data-toggle="tab">我的提问</a></li> 
-      <li><a href="#two" data-toggle="tab">我的回答</a></li> 
+      <li><a href="#two" data-toggle="tab">我的回答</a></li>
+
      </ul> 
      <div class="tab-content tab-wraped"> 
       <div id="one" class="tab-pane active"> 
@@ -231,5 +233,18 @@
 <script src="./dist/layer/layer.js"></script>
 <script src="./dist/js/extract.js"></script>
 <script type="text/javascript">
-
+    $(function(){
+        //鼠标移动事件
+        $(".hover").hover(function(){
+            $(".hoverinfo").stop().animate({
+                opacity: "show"
+            },"slow");
+            $(this).find(".fa-plus").css("color","#e64620");
+        },function(){
+            $(".hoverinfo").stop().animate({
+                opacity: "hide"
+            },"slow");
+            $(this).find(".fa-plus").css("color","#000");
+        });
+    });
 </script>

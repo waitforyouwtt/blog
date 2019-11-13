@@ -1,10 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="icon" href="./img/asset-favicon.ico" />
     <title>head</title>
+    <!-- 页面 css js -->
+    <!-- <script type="text/javascript" src="../../plugins/sui/sui.min.js"></script> -->
+    <!-- <script type="text/javascript" src="./sj-index.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="./dist/plugins/normalize-css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="./dist/plugins/yui/cssgrids-min.css" />
+    <link rel="stylesheet" type="text/css" href="./dist/plugins/sui/sui.min.css" />
+    <link rel="stylesheet" type="text/css" href="./dist/plugins/sui/sui-append.min.css" />
+    <link rel="stylesheet" type="text/css" href="./dist/plugins/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="./dist/css/widget-base.css" />
+    <link rel="stylesheet" type="text/css" href="./dist/css/widget-head-foot.css" />
+    <link rel="stylesheet" type="text/css" href="./dist/css/page-headline-logined.css" />
 </head>
-<body>
 
+<body>
+<header>
+    <div class="sui-navbar">
+        <div class="navbar-inner">
+            <a href="javaScript:void(0);" class="sui-brand"><img src="./dist/img/asset-logo-black.png" alt="社交" /></a>
+            <ul class="sui-nav">
+                <li class="active"><a href="./headline-logined.html">头条</a></li>
+                <li><a href="./qa-logined.html">问答</a></li>
+                <li><a href="./activity-index.html">活动</a></li>
+                <li><a href="./makeFriends-index.html">交友</a></li>
+                <li><a href="./spit-index.html">吐槽</a></li>
+                <li><a href="./recruit-index.html">招聘</a></li>
+            </ul>
+            <form class="sui-form sui-form pull-left">
+                <input type="text" placeholder="输入关键词..." />
+                <span class="btn-search fa fa-search"></span>
+            </form>
+            <div class="sui-nav pull-right info" style="margin: -60px 140px;">
+                <li><a href="./other-notice.html" target="_blank" class="notice">通知</a></li>
+                <li class="hover"> <span class="fa fa-plus "></span>
+                    <ul class="hoverinfo">
+                        <li><i class="fa fa-share-alt" aria-hidden="true"></i> <a href="./headline-submit.html">去分享</a></li>
+                        <li><i class="fa fa-question-circle" aria-hidden="true"></i> <a href="./qa-submit.html" target="_blank">提问题</a></li>
+                        <li><i class="fa fa-comments" aria-hidden="true"></i><a href="./spit-submit.html" target="_blank">去吐槽</a></li>
+                        <li><i class="fa fa-heartbeat" aria-hidden="true"></i> <a href="./makeFriends-submit.html" target="_blank">发约会</a></li>
+                    </ul> </li>
+                <li><a href="./person-homepage" target="_blank" class="homego"><img src="./dist/img/widget-photo.png" alt="用户头像" /></a></li>
+            </div>
+        </div>
+    </div>
+</header>
 </body>
 </html>
+
+<script src="./dist/plugins/jquery/dist/jquery.js"></script>
+<script>
+    $(function(){
+        $(".hover").hover(function(){
+            $(".hoverinfo").stop().animate({
+                opacity: "show"
+            },"slow");
+            $(this).find(".fa-plus").css("color","#e64620");
+        },function(){
+            $(".hoverinfo").stop().animate({
+                opacity: "hide"
+            },"slow");
+            $(this).find(".fa-plus").css("color","#000");
+        })
+    })
+</script>

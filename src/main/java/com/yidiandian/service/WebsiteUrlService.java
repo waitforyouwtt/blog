@@ -18,6 +18,13 @@ public interface WebsiteUrlService {
     WebsiteUrl saveWebsiteUrl(WebsiteUrlView view);
 
     /**
+     * 批量添加
+     * @param views
+     * @return
+     */
+    int batchInsertWebsiteUrl(List<WebsiteUrlView> views);
+
+    /**
      * 根据条件查询业务url 连接
      * @param view
      * @return

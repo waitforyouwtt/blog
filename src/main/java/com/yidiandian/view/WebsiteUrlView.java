@@ -29,11 +29,11 @@ public class WebsiteUrlView {
     private Integer parentId;
 
     @Basic
-    @Column(name = "url_title",columnDefinition="varchar(200) COMMENT 'url名字'")
+    @Column(name = "url_title",columnDefinition="varchar(200) COMMENT 'url名字'",unique = true)
     private String urlTitle;
 
     @Basic
-    @Column(name = "url",columnDefinition="varchar(200) COMMENT 'url链接'")
+    @Column(name = "url",columnDefinition="varchar(200) COMMENT 'url链接'",unique = true)
     private String url;
 
     @Basic
