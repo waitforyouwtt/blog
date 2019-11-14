@@ -1,5 +1,6 @@
 package com.yidiandian.controller;
 
+import com.sun.org.apache.regexp.internal.RE;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,6 +53,41 @@ public class HomeController {
     @GetMapping("/account-settings")
     public String personAccount(){
         return "person-account";
+    }
+    //头条
+    @GetMapping("head-lines")
+    public String headLines(){
+        return "headline-logined";
+    }
+    //问答
+    @GetMapping("/questions-and-answers")
+    public String questionsAndAnswers(){
+        return "qa-logined";
+    }
+    //活动
+    @GetMapping("/activitys")
+    public String activitys(){
+        return "activity-index";
+    }
+    //吐槽
+    @GetMapping("/make-complaints")
+    public String makeComplaints(){
+        return "spit-index";
+    }
+    //招聘
+    @GetMapping("/recruit")
+    public String recruit(){
+        return "recruit-index";
+    }
+    //交友
+    @GetMapping("make-friends")
+    public String friends(){
+        return "makeFriends-index";
+    }
+    //音乐
+    @GetMapping("/music")
+    public String music(){
+        return "music";
     }
 
 
