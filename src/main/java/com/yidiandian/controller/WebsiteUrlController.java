@@ -22,9 +22,29 @@ public class WebsiteUrlController {
     @Autowired
     WebsiteUrlService websiteUrlService;
 
-    @PostMapping("/getWebsiteUrl")
+    //我的主页
+    @PostMapping("/my-homepage")
     @ResponseBody
-    public List<WebsiteUrlView> getWebsiteUrl(WebsiteUrlView view){
+    public List<WebsiteUrlView> myHomepage(WebsiteUrlView view){
+        view.setPlateId(1);
+        List<WebsiteUrlView> findByParams = websiteUrlService.getWebsiteUrl(view);
+        return findByParams;
+    }
+
+    //首页top left url
+    @PostMapping("/homePageTopUrlLeft")
+    @ResponseBody
+    public List<WebsiteUrlView> homePageTopUrlLeft(WebsiteUrlView view){
+        view.setPlateId(2);
+        List<WebsiteUrlView> findByParams = websiteUrlService.getWebsiteUrl(view);
+        return findByParams;
+    }
+
+    //首页top left right
+    @PostMapping("/homePageTopUrlRight")
+    @ResponseBody
+    public List<WebsiteUrlView> homePageTopUrlRight(WebsiteUrlView view){
+        view.setPlateId(3);
         List<WebsiteUrlView> findByParams = websiteUrlService.getWebsiteUrl(view);
         return findByParams;
     }
