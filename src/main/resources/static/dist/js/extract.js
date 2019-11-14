@@ -7,6 +7,20 @@ $(function(){
 
     //首页头部url right 链接
     homePageTopUrlRight();
+
+   //鼠标悬浮事件
+   $(".hover").hover(function(){
+     $(".hoverinfo").stop().animate({
+        opacity: "show"
+     },"slow");
+     $(this).find(".fa-plus").css("color","#e64620");
+   },function(){
+     $(".hoverinfo").stop().animate({
+        opacity: "hide"
+     },"slow");
+     $(this).find(".fa-plus").css("color","#000");
+   })
+
 });
 
 //我的主页
