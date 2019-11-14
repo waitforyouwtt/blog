@@ -55,7 +55,7 @@ public class FriendshipLinkServiceImpl implements FriendshipLinkService {
         view.setIsDelete(DeleteEnum.NORMAL.getCode());
         List<FriendshipLink> friendshipLinks = friendshipLinkDao.findFriendshipLink(view).stream().distinct().collect(Collectors.toList());
         if (CollectionUtils.isEmpty(friendshipLinks)){
-            return null;
+            return new ArrayList<>();
         }
         getFriendshipLinks(views, friendshipLinks);
         return views;

@@ -1,7 +1,9 @@
 package com.yidiandian.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.yidiandian.dao.ArticleDao;
 import com.yidiandian.entity.Article;
+import com.yidiandian.enums.DeleteEnum;
 import com.yidiandian.jpa.ArticleMapper;
 import com.yidiandian.service.ArticleService;
 import com.yidiandian.view.ArticleView;
@@ -9,7 +11,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,6 +28,9 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Autowired
     ArticleMapper articleMapper;
+
+    @Autowired
+    ArticleDao articleDao;
     /**
      * 添加文章
      *
@@ -50,6 +57,23 @@ public class ArticleServiceImpl implements ArticleService {
      */
     @Override
     public List<ArticleView> findByParams(ArticleView view) {
-        return null;
+
+        List<ArticleView> views = new ArrayList<>();
+        view.setIsDelete(DeleteEnum.NORMAL.getCode());
+        List<Article> findArticles =  articleDao.findByParams(view);
+        if (CollectionUtils.isEmpty(findArticles)){
+            return new ArrayList<>();
+        }
+        getArticleList(views,findArticles);
+        return views;
+    }
+
+    private void getArticleList(List<ArticleView> views, List<Article> findArticles) {
+        findArticles.stream().forEach(article -> {
+            ArticleView view = new ArticleView();
+            BeanCopier beanCopier = BeanCopier.create(Article.class,ArticleView.class,false);
+            beanCopier.copy(article,view,null);
+            views.add(view);
+        });
     }
 }

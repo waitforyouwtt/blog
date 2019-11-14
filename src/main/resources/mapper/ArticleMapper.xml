@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yidiandian.dao.ArticleDao">
+
+<!--    <insert id="batchInsertFriendshipLink">
+      insert into tb_question(parent_id,url_title,url,is_delete,creator,modifier, create_time,update_time)
+      values
+        <foreach collection="viewList" item="vo" separator=",">
+            (
+            #{vo.parentId},#{vo.urlTitle},#{vo.url},1,
+            #{vo.creator}, #{vo.modifier},now(),now()
+            )
+        </foreach>
+    </insert>-->
+
+    <select id="findByParams" resultType="com.yidiandian.entity.Article" parameterType="com.yidiandian.view.ArticleView">
+        select  id,user_id,column_id,title,content,image,is_public,is_top,visits,thumbup,comment,state,channel_id,
+        url,type,is_delete,creator,modifier,create_time,update_time
+        from tb_article where 1 = 1 and is_delete = 1
+        <if test="id != null">
+          and id = #{id}
+        </if>
+        <if test="title != null">
+            and title = #{title}
+        </if>
+        <if test="content != null and content !=''">
+            and content like concat(concat("%",#{content}),"%")
+        </if>
+        <if test="creator != null">
+            and creator = #{creator}
+        </if>
+        <if test="modifier != null">
+            and modifier = #{modifier}
+        </if>
+
+    </select>
+
+<!--    <update id="updateById" parameterType="com.yidiandian.view.FriendshipLinkView">
+        update tb_friendship_link
+        <set>
+            <if test="parentId != null">
+                 parent_id = #{parentId},
+            </if>
+            <if test="urlTitle != null and urlTitle !=''">
+                 url_title = #{urlTitle},
+            </if>
+            <if test="creator != null">
+                 creator = #{creator},
+            </if>
+            <if test="modifier != null">
+                 modifier = #{modifier},
+            </if>
+            <if test="isDelete != null">
+                is_delete = #{isDelete},
+            </if>
+        </set>
+        where id = #{id}
+    </update>-->
+
+</mapper>
