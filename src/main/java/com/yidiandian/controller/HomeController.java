@@ -1,6 +1,5 @@
 package com.yidiandian.controller;
 
-import com.sun.org.apache.regexp.internal.RE;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -87,7 +86,7 @@ public class HomeController {
     //音乐
     @GetMapping("/music")
     public String music(){
-        return "music";
+        return "music-list";
     }
 
 

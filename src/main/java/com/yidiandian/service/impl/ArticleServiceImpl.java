@@ -57,7 +57,7 @@ public class ArticleServiceImpl implements ArticleService {
      */
     @Override
     public List<ArticleView> findByParams(ArticleView view) {
-
+        log.info("根据条件进行查询文章：{}",JSON.toJSON(view));
         List<ArticleView> views = new ArrayList<>();
         view.setIsDelete(DeleteEnum.NORMAL.getCode());
         List<Article> findArticles =  articleDao.findByParams(view);

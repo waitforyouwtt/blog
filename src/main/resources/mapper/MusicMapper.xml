@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yidiandian.dao.MusicDao">
+
+<!--    <insert id="batchInsertFriendshipLink">
+      insert into tb_question(parent_id,url_title,url,is_delete,creator,modifier, create_time,update_time)
+      values
+        <foreach collection="viewList" item="vo" separator=",">
+            (
+            #{vo.parentId},#{vo.urlTitle},#{vo.url},1,
+            #{vo.creator}, #{vo.modifier},now(),now()
+            )
+        </foreach>
+    </insert>-->
+
+    <select id="findMusic" resultType="com.yidiandian.entity.Music" parameterType="com.yidiandian.view.MusicView">
+     select
+        id,
+        user_id,
+        music_name,
+        music_url,
+        singer,
+        lyric,
+        music_duration,
+        music_video,
+        is_like,
+        is_collect,
+        comment,
+        comment_time,
+        is_delete,
+        creator,
+        modifier,
+        create_time,
+        update_time
+
+        from tb_music where 1 = 1 and is_delete = 1
+        <if test="id != null">
+          and id = #{id}
+        </if>
+        <if test="musicName != null">
+            and music_name = #{musicName}
+        </if>
+        <if test="singer != null and singer !=''">
+            and singer like concat(concat("%",#{singer}),"%")
+        </if>
+        <if test="creator != null">
+            and creator = #{creator}
+        </if>
+        <if test="modifier != null">
+            and modifier = #{modifier}
+        </if>
+
+    </select>
+
+<!--    <update id="updateById" parameterType="com.yidiandian.view.FriendshipLinkView">
+        update tb_friendship_link
+        <set>
+            <if test="parentId != null">
+                 parent_id = #{parentId},
+            </if>
+            <if test="urlTitle != null and urlTitle !=''">
+                 url_title = #{urlTitle},
+            </if>
+            <if test="creator != null">
+                 creator = #{creator},
+            </if>
+            <if test="modifier != null">
+                 modifier = #{modifier},
+            </if>
+            <if test="isDelete != null">
+                is_delete = #{isDelete},
+            </if>
+        </set>
+        where id = #{id}
+    </update>-->
+
+</mapper>
