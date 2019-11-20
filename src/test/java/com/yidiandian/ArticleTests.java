@@ -21,7 +21,7 @@ public class ArticleTests extends BlogApplicationTests{
     @Autowired
     ArticleService articleService;
 
-    @Test
+/*    @Test
     public void add(){
         ArticleView view = new ArticleView();
         view.setUserId("5775212");
@@ -35,6 +35,6 @@ public class ArticleTests extends BlogApplicationTests{
         view.setUrl("www.baidu.com");
         Article article = articleService.addArticle(view);
         log.info("添加返回的结果：{}", JSON.toJSON(article));
-    }
+    }*/
 
 }

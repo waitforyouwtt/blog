@@ -18,9 +18,10 @@
         id,
         user_id,
         music_name,
+        music_img,
         music_url,
         singer,
-        lyric,
+        lyric_content,
         music_duration,
         music_video,
         is_like,
@@ -36,6 +37,12 @@
         from tb_music where 1 = 1 and is_delete = 1
         <if test="id != null">
           and id = #{id}
+        </if>
+        <if test="ids!=null and ids.size()>0">
+            and  id in
+            <foreach collection="ids" item="item" separator="," open="(" close=")">
+                #{item}
+            </foreach>
         </if>
         <if test="musicName != null">
             and music_name = #{musicName}

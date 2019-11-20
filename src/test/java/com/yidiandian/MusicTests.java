@@ -14,7 +14,7 @@ import java.util.List;
 @Component
 public class MusicTests extends BlogApplicationTests{
 
-	@Autowired
+/*	@Autowired
 	MusicService musicService;
 
 
@@ -23,6 +23,6 @@ public class MusicTests extends BlogApplicationTests{
 		MusicView view = new MusicView();
 		List<MusicView> music = musicService.findMusic(view);
 		log.info("根据条件进行查询到的结果：{}", JSON.toJSON(music));
-	}
+	}*/
 
 }

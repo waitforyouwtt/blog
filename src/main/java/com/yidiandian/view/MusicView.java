@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Author: 凤凰[小哥哥]
@@ -14,6 +15,8 @@ import java.util.Date;
 public class MusicView {
 
     private Integer id;
+
+    private List<Integer> ids;
 
     @Basic
     @Column(name = "user_id",columnDefinition="varchar(100) COMMENT '用户ID'")
@@ -28,12 +31,16 @@ public class MusicView {
     private String musicUrl;
 
     @Basic
+    @Column(name = "music_img",columnDefinition="varchar(100) COMMENT '歌曲封面背景图片'")
+    private String musicImg;
+
+    @Basic
     @Column(name = "singer",columnDefinition="varchar(100) COMMENT '歌手'")
     private String singer;
 
     @Basic
-    @Column(name = "lyric",columnDefinition="text COMMENT '歌曲歌词'")
-    private String lyric;
+    @Column(name = "lyric_content",columnDefinition="text COMMENT '歌曲歌词'")
+    private String lyricContent;
 
     @Basic
     @Column(name = "music_duration",columnDefinition="int(11) COMMENT '歌曲时长'")

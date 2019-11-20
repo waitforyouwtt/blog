@@ -41,12 +41,16 @@ public class Music implements Serializable{
     private String musicUrl;
 
     @Basic
+    @Column(name = "music_img",columnDefinition="varchar(100) COMMENT '歌曲封面背景图片'")
+    private String musicImg;
+
+    @Basic
     @Column(name = "singer",columnDefinition="varchar(100) COMMENT '歌手'")
     private String singer;
 
     @Basic
-    @Column(name = "lyric",columnDefinition="text COMMENT '歌曲歌词'")
-    private String lyric;
+    @Column(name = "lyric_content",columnDefinition="text COMMENT '歌曲歌词'")
+    private String lyricContent;
 
     @Basic
     @Column(name = "music_duration",columnDefinition="int(11) COMMENT '歌曲时长'")

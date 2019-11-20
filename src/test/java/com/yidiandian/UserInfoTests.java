@@ -18,7 +18,7 @@ import java.util.Date;
 @Component
 public class UserInfoTests extends BlogApplicationTests{
 
-	@Autowired
+/*	@Autowired
 	UserInfoService userInfoService;
 
 	@Test
@@ -74,7 +74,7 @@ public class UserInfoTests extends BlogApplicationTests{
 		view.setPassword("wtt19940512577");
 		UserInfo userInfo = userInfoService.findUserInfo(view);
 		log.info("查询得到的用户信息：{}",userInfo);
-	}
+	}*/
 
 /*	@Test
 	public void updateUserTest(){

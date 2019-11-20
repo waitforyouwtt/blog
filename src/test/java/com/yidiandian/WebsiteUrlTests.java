@@ -24,7 +24,7 @@ import java.util.List;
 @Component
 public class WebsiteUrlTests extends BlogApplicationTests {
 
-    @Autowired
+/*    @Autowired
     WebsiteUrlService websiteUrlService;
 
     @Test
@@ -132,5 +132,5 @@ public class WebsiteUrlTests extends BlogApplicationTests {
         String s = DateUtils.diyDate(new Date(), 5);
         log.info("s:{}",s);
 
-    }
+    }*/
 }

@@ -62,6 +62,9 @@ public class MusicServiceImpl implements MusicService {
         log.info("根据条件进行查询请求参数：{}",JSON.toJSON(view));
         List<MusicView> views = new ArrayList<>();
         view.setIsDelete(DeleteEnum.NORMAL.getCode());
+        if (!CollectionUtils.isEmpty(view.getIds())){
+            view.setId(null);
+        }
         List<Music> findMusics =  musicDao.findMusic(view);
         if (CollectionUtils.isEmpty(findMusics)){
             return new ArrayList<>();

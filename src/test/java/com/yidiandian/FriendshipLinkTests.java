@@ -22,7 +22,7 @@ import java.util.List;
 @Component
 public class FriendshipLinkTests extends BlogApplicationTests {
 
-    @Autowired
+/*    @Autowired
     FriendshipLinkDao friendshipLinkDao;
 
     @Autowired
@@ -183,5 +183,5 @@ public class FriendshipLinkTests extends BlogApplicationTests {
 
         int i = friendshipLinkDao.updateById(view);
         log.info("修改：{}",i);
-    }
+    }*/
 }
