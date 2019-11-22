@@ -86,11 +86,4 @@ public class MusicView {
     @Column(name = "update_time",columnDefinition="datetime COMMENT '修改时间'")
     private Date updateTime;
 
-    private MultipartFile musicImgFile;
-
-    private MultipartFile musicVideoFile;
-
-    private byte [] musicImgByte;
-
-    private byte [] musicVideoByte;
 }
