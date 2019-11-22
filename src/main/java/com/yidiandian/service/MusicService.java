@@ -21,4 +21,11 @@ public interface MusicService {
      * 根据条件进行查询
      */
     List<MusicView> findMusic(MusicView view);
+
+    /**
+     * 后台添加音乐
+     * @param view
+     * @return
+     */
+    int uploadMusic(MusicView view);
 }

@@ -88,6 +88,11 @@ public class HomeController {
     public String music(){
         return "music-list";
     }
+    //上传音乐
+    @GetMapping("/to-upload-music")
+    public String toUploadMusic(){
+        return "upload-music";
+    }
 
 
 

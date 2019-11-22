@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+ <meta charset="utf-8">
+ <title>上传音乐</title>
+ <style type="text/css">
+  *{
+
+  }
+  .musicFatherDiv{
+   width: 100%;
+   height: 650px;
+   color: white;
+   border-radius: 5px;
+   font-family: "微软雅黑";
+   font-size: 14px;
+  //cursor: pointer;
+  }
+
+  .musicUploadDiv{
+   width: 100%;
+   height: 650px;
+  }
+  input[type="text"]{
+   height: 40px;
+   width: 600px;
+   border-radius: 5px;
+   font-size:14px;
+  }
+/*  table{
+   background: url("/dist/music/img/bg.jpg");
+   background-repeat:no-repeat;
+   background-size: 100% 100%;
+   background-size: cover;
+   margin: 10px 200px 30px 300px;
+   opacity:0.9;
+  }*/
+  table{
+   margin: 10px 200px 30px 400px;
+   background: #777777;
+  }
+  table, tr,td{
+   border: #00b3ee 1px dotted ;
+   height: auto;
+   width: 700px;
+   padding: auto;
+  }
+  textarea{
+   height: 300px;
+   width: 600px;
+   border-radius: 5px;
+  }
+ </style>
+</head>
+<body>
+<div class="musicFatherDiv">
+   <div class="musicUploadDiv">
+    <form method="post" action="/upload-double-file" enctype="multipart/form-data">
+    <table>
+     <tr>
+      <th colspan="2"><h3><label>上传音乐</label></h3></th>
+     </tr>
+       <tr>
+          <td><label>歌曲名字：</label></td>
+          <td><span><input type="text" id="musicName" name="musicName" placeholder="格式：xxx[歌手]-yyy[歌名]"></span></td>
+       </tr>
+     <tr>
+      <td><label>歌曲背景图标：</label></td>
+      <td><span><input type="file" name="file"></span></td>
+     </tr>
+     <tr>
+      <td><label>歌曲url：</label></td>
+      <td><span><input type="file" name="file"></span></td>
+     </tr>
+     <tr>
+      <td><label>歌词：</label></td>
+      <td><span><textarea name="lyricContent"></textarea> </span></td>
+     </tr>
+     <tr>
+      <td colspan="2"><label><input type="submit" value="提交" style="margin-left: 50% "></label></td>
+     </tr>
+    </table>
+    </form>
+   </div>
+ <!--<form method="post" action="/upload-double-file" enctype="multipart/form-data">
+  <input type="file" name="file"><br>
+  <input type="file" name="file"><br>
+  <input type="submit" value="提交">
+ </form> -->
+</div>
+</body>
+</html>
+
+<script src="./dist/plugins/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+
+
+    //页面加载事件
+    $(function(){
+       // var play_btn = $("#play_btn").val();
+    });
+
+</script>

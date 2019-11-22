@@ -24,4 +24,7 @@ public class Constants {
    //作者
    public static final String author = "凤凰小哥哥";
 
+   //default-value
+   public static final String defaultValue = "凤凰小哥哥";
+
 }

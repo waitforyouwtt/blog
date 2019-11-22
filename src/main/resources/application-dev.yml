@@ -72,3 +72,6 @@ server:
   port: 8081
 
 
+blog:
+  musicVideoPath: /blog/dist/music/song/
+  musicImgPath: /blog/dist/music/img/

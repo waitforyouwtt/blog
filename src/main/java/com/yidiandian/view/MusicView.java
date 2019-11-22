@@ -1,6 +1,7 @@
 package com.yidiandian.view;
 
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -85,4 +86,12 @@ public class MusicView {
     @Basic
     @Column(name = "update_time",columnDefinition="datetime COMMENT '修改时间'")
     private Date updateTime;
+
+    private MultipartFile musicImgFile;
+
+    private MultipartFile musicVideoFile;
+
+    private byte [] musicImgByte;
+
+    private byte [] musicVideoByte;
 }

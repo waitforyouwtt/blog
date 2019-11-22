@@ -2,3 +2,9 @@
 spring:
   profiles:
     active: dev
+  #上传文件总的最大值
+  servlet:
+    multipart:
+      max-request-size: 50MB
+      #单个文件的最大值
+      max-file-size: 20MB
