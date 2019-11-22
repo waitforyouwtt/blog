@@ -3,12 +3,10 @@ package com.yidiandian.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.yidiandian.constant.Constants;
 import com.yidiandian.dao.MusicDao;
-import com.yidiandian.entity.Article;
 import com.yidiandian.entity.Music;
 import com.yidiandian.enums.DeleteEnum;
 import com.yidiandian.jpa.MusicMapper;
 import com.yidiandian.service.MusicService;
-import com.yidiandian.view.ArticleView;
 import com.yidiandian.view.MusicView;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -16,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -79,17 +76,6 @@ public class MusicServiceImpl implements MusicService {
         }
         getMusic(views,findMusics);
         return views;
-    }
-
-    /**
-     * 后台添加音乐
-     *
-     * @param view
-     * @return
-     */
-    @Override
-    public int uploadMusic(MusicView view) {
-        return 0;
     }
 
     private void getMusic(List<MusicView> views, List<Music> findMusics) {

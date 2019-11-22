@@ -3,7 +3,6 @@ package com.yidiandian.view;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
-
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import java.io.Serializable;

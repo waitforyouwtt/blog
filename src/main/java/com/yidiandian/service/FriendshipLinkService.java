@@ -1,7 +1,6 @@
 package com.yidiandian.service;
 
 import com.yidiandian.view.FriendshipLinkView;
-
 import java.util.List;
 
 /**

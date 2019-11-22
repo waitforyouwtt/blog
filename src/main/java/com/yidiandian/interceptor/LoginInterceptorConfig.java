@@ -21,7 +21,6 @@ public class LoginInterceptorConfig implements WebMvcConfigurer {
     //增加拦截器方法
     public void addInterceptors(InterceptorRegistry registry){
         InterceptorRegistration addInterceptor = registry.addInterceptor(createLoginInterceptor());
-       /* addInterceptor.addPathPatterns("/**");*/
         //排除一些访问,不拦截
         //去登录
         addInterceptor.excludePathPatterns("/toLogin");
@@ -57,8 +56,6 @@ public class LoginInterceptorConfig implements WebMvcConfigurer {
         addInterceptor.excludePathPatterns("/dist/img/*.ico");
         addInterceptor.excludePathPatterns("/dist/plugins/**/*");
 
-  /*addInterceptor.excludePathPatterns("/cookie");
-  addInterceptor.excludePathPatterns("/getcookie");*/
     }
 
 }

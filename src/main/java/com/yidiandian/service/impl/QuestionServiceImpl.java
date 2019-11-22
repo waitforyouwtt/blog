@@ -2,13 +2,11 @@ package com.yidiandian.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.yidiandian.dao.QuestionDao;
-import com.yidiandian.entity.Article;
 import com.yidiandian.entity.FriendshipLink;
 import com.yidiandian.entity.Question;
 import com.yidiandian.enums.DeleteEnum;
 import com.yidiandian.jpa.QuestionMapper;
 import com.yidiandian.service.QuestionService;
-import com.yidiandian.view.ArticleView;
 import com.yidiandian.view.FriendshipLinkView;
 import com.yidiandian.view.QuestionView;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

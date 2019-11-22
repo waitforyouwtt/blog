@@ -4,6 +4,7 @@ import com.yidiandian.constant.Constants;
 import com.yidiandian.dao.UserInfoDao;
 import com.yidiandian.entity.UserInfo;
 import com.yidiandian.enums.BusinessEnum;
+import com.yidiandian.enums.DeleteEnum;
 import com.yidiandian.exceptions.MyException;
 import com.yidiandian.jpa.UserInfoMapper;
 import com.yidiandian.service.UserInfoService;
@@ -15,7 +16,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
-
 import java.util.Date;
 import java.util.Optional;
 
@@ -50,7 +50,7 @@ public class UserInfoServiceImpl implements UserInfoService {
         userInfo.setCreateTime(new Date());
         userInfo.setUpdateTime(new Date());
         userInfo.setPassword(AesUtil.encrypt(Constants.SECRET_KEY,userInfoView.getPassword()));
-        userInfo.setIsDelete(1);
+        userInfo.setIsDelete(DeleteEnum.NORMAL.getCode());
         UserInfo result = null;
         try{
             result = userInfoMapper.save(userInfo);

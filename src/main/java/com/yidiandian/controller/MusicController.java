@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -89,9 +88,6 @@ public class MusicController {
             outputStream.close();
             //保存数据
             view.setMusicName(oriFileName.substring(0,oriFileName.lastIndexOf(".")));
-           /* view.setSuffix(suffix);
-            view.setSize(file.getSize());
-            view.setCode(fileCode);*/
             view.setMusicUrl(fullFilePath);
             log.info("保存的参数为：{}",JSON.toJSON(view));
             musicService.saveMusic(view);
@@ -144,11 +140,6 @@ public class MusicController {
                         log.info("suffix:{}",suffix);
                         view.setSinger(oriFileName.substring(0,oriFileName.indexOf("-")));
                     }
-
-                   /* view.setSuffix(suffix);
-                    view.setSize(file.getSize());
-                    view.setCode(fileCode);*/
-
                 }catch (Exception e){
                   log.info("多文件上传异常：{}",e.getMessage());
                 }

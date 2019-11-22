@@ -1,8 +1,6 @@
 package com.yidiandian.utils;
 
 import org.apache.commons.lang3.StringUtils;
-import org.thymeleaf.util.TextUtils;
-
 import java.io.*;
 
 /**

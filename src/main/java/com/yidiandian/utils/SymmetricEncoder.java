@@ -2,7 +2,6 @@ package com.yidiandian.utils;
 
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
-
 import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.IOException;

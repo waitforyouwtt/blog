@@ -2,7 +2,6 @@ package com.yidiandian.service;
 
 import com.yidiandian.entity.Music;
 import com.yidiandian.view.MusicView;
-
 import java.util.List;
 
 /**
@@ -22,10 +21,4 @@ public interface MusicService {
      */
     List<MusicView> findMusic(MusicView view);
 
-    /**
-     * 后台添加音乐
-     * @param view
-     * @return
-     */
-    int uploadMusic(MusicView view);
 }

@@ -1,7 +1,6 @@
 package com.yidiandian.view;
 
 import lombok.Data;
-
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import java.io.Serializable;

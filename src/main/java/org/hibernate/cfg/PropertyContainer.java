@@ -14,7 +14,6 @@ import org.hibernate.cfg.annotations.HCANNHelper;
 import org.hibernate.internal.CoreMessageLogger;
 import org.hibernate.internal.util.StringHelper;
 import org.jboss.logging.Logger;
-
 import javax.persistence.*;
 import java.util.*;
 
