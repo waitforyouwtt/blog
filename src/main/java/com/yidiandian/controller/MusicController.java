@@ -110,23 +110,18 @@ public class MusicController {
 
         log.info("接收的上传请求参数：{}",JSON.toJSON(params));
         Map <String,String> result = new HashMap<>(16);
-
         //用list 接受上传的多个文件
         List<MultipartFile> files = ((MultipartHttpServletRequest) request).getFiles("file");
+
         MultipartFile file = null;
         BufferedOutputStream stream = null;
         MusicView view  = new MusicView();
         String fullFilePath = null;
-        String singer = null;
+
         for (int i = 0; i < files.size(); i++ ){
             file =files.get(i);
             if (!file.isEmpty()){
-                LocalDate now = LocalDate.now();
-                DateTimeFormatter dfm = DateTimeFormatter.ofPattern("yyyyMMdd");
-                String dateDir = now.format(dfm);
-
                 try{
-                    String fileCode = String.valueOf(System.nanoTime());
                     //获取文件名
                     String oriFileName = file.getOriginalFilename();
                     //获取文件后缀名
@@ -138,7 +133,6 @@ public class MusicController {
                     }else if(".mp3".equals(suffix)){
                         dirPath =  Constants.path+musicVideoPath;
                     }
-                    //fullFilePath = dirPath + fileCode+suffix;
                     fullFilePath = dirPath+oriFileName;
                     log.info("上传文件存储路径：{}",fullFilePath);
                     mkDir(new File(dirPath));
