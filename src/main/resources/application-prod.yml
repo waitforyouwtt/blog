@@ -65,8 +65,13 @@ logging:
   level:
    com:
     yidiandian:
-      dao: debug
+      dao: error
 
 #指定服务的端口号
 server:
   port: 7101
+
+#文件上传地址
+blog:
+  musicVideoPath: static/dist/music/song/
+  musicImgPath: static/dist/music/img/
