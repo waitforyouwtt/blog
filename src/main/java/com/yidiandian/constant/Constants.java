@@ -27,4 +27,6 @@ public class Constants {
    //default-value
    public static final String defaultValue = "凤凰小哥哥";
 
+   public static final String path = "src/main/resources/";
+
 }

@@ -1,6 +1,7 @@
 package com.yidiandian.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.yidiandian.constant.Constants;
 import com.yidiandian.entity.UserInfo;
 import com.yidiandian.service.MusicService;
 import com.yidiandian.utils.UserInfoSessionUtils;
@@ -10,10 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import javax.servlet.http.HttpServletRequest;
@@ -22,9 +20,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * @Author: 凤凰[小哥哥]
@@ -65,7 +61,12 @@ public class MusicController {
     }
 
     @PostMapping("/upload-simple-file")
-    public void uploadSimpleFile(@RequestParam("file")MultipartFile file){
+    @ResponseBody
+    public Map<String,String> uploadSimpleFile(@RequestParam("file")MultipartFile file){
+
+        log.info("接收的上传请求参数：{}",JSON.toJSON(file));
+        Map <String,String> result = new HashMap<>(16);
+
         LocalDate now = LocalDate.now();
         DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyyMMdd");
         String dateDir = now.format(df);
@@ -93,13 +94,23 @@ public class MusicController {
             musicService.saveMusic(view);
         }catch (Exception e){
             log.info("上传文件异常：{}",e.getMessage());
+            result.put("code","500");
+            result.put("message","上传文件异常");
+            return result;
         }
+        result.put("code","200");
+        result.put("message","成功");
+        log.info("上文上传返回结果：{}",JSON.toJSON(result));
+        return result;
     }
 
-    @PostMapping("/upload-double-file")
+    @RequestMapping(value = "/upload-double-file",method = RequestMethod.POST)
     @ResponseBody
-    public void uploadDoubleFile(HttpServletRequest request,MusicView params){
+    public Map<String,String> uploadDoubleFile(HttpServletRequest request,MusicView params){
+
         log.info("接收的上传请求参数：{}",JSON.toJSON(params));
+        Map <String,String> result = new HashMap<>(16);
+
         //用list 接受上传的多个文件
         List<MultipartFile> files = ((MultipartHttpServletRequest) request).getFiles("file");
         MultipartFile file = null;
@@ -121,9 +132,14 @@ public class MusicController {
                     //获取文件后缀名
                     String suffix = oriFileName.substring(oriFileName.lastIndexOf("."),oriFileName.length());
                     //文件上传路径
-                    String dirPath = musicImgPath;
-                    String dirPath2 = musicVideoPath;
-                    fullFilePath = dirPath + fileCode+suffix;
+                    String dirPath = null;
+                    if (".jpg".equals(suffix) || ".png".equals("suffix")){
+                        dirPath =  Constants.path+musicImgPath;
+                    }else if(".mp3".equals(suffix)){
+                        dirPath =  Constants.path+musicVideoPath;
+                    }
+                    //fullFilePath = dirPath + fileCode+suffix;
+                    fullFilePath = dirPath+oriFileName;
                     log.info("上传文件存储路径：{}",fullFilePath);
                     mkDir(new File(dirPath));
                     stream = new BufferedOutputStream(new FileOutputStream(fullFilePath));
@@ -132,7 +148,7 @@ public class MusicController {
                     stream.close();
                     //保存数据
                     view.setMusicName(oriFileName.substring(0,oriFileName.lastIndexOf(".")));
-                    if (".jpg".equals(suffix) || ".png".equals("suffix")){
+                    if (".jpg".equals(suffix) || ".png".equals(suffix)){
                         view.setMusicImg(oriFileName);
                     }
                     if (".mp3".equals(suffix)){
@@ -141,7 +157,10 @@ public class MusicController {
                         view.setSinger(oriFileName.substring(0,oriFileName.indexOf("-")));
                     }
                 }catch (Exception e){
-                  log.info("多文件上传异常：{}",e.getMessage());
+                    log.info("上传文件异常：{}",e.getMessage());
+                    result.put("code","500");
+                    result.put("message","上传文件异常");
+                    return result;
                 }
             }
         }
@@ -155,6 +174,10 @@ public class MusicController {
         log.info("保存的参数是：{}",JSON.toJSON(view));
         musicService.saveMusic(view);
 
+        result.put("code","200");
+        result.put("message","成功");
+        log.info("上文上传返回结果：{}",JSON.toJSON(result));
+        return result;
     }
 
     /**
@@ -169,10 +192,5 @@ public class MusicController {
             file.mkdir();
         }
     }
-
-
-
-
-
 
 }
