@@ -132,10 +132,7 @@
 		</dependency>
 
 
-
-
-
-    </dependencies>
+	</dependencies>
 
 	<packaging>jar</packaging>
 	<build>
