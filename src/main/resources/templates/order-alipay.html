@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>订单支付</title>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+<div class="alipayDiv">
+    <form id="form" action="order/alipay" method="post">
+        *商户订单 :
+        <input type="text" name="outTradeNo" value="dzcp100010001"><br>
+        *订单名称 :
+        <input type="text" name="subject" value="红魔手机"><br>
+        *付款金额 :
+        <input type="text" name="totalAmount" value="0.1" ><br>
+        *商品描述 :
+        <input type="text" name="body" value="红魔手机 努比亚出品游戏手机"><br>
+        <input type="button" value="支付宝支付" onclick="submitForm('order/alipay')">
+        <input type="button" value=" 微信支付  " onclick="submitForm('order/wexpay')">
+    </form>
+</div>
+</body>
+</html>
+
+<script src="./dist/plugins/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+
+    function submitForm(action) {
+        document.getElementById("form").action = action
+        document.getElementById("form").submit()
+    }
+
+    //页面加载事件
+    $(function(){
+       var data = [[${"result"}]];
+
+    });
+
+</script>

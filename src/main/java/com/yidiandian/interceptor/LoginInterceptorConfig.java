@@ -31,6 +31,7 @@ public class LoginInterceptorConfig implements WebMvcConfigurer {
         addInterceptor.excludePathPatterns("/followUS");
         addInterceptor.excludePathPatterns("/footer");
         addInterceptor.excludePathPatterns("/head");
+        addInterceptor.excludePathPatterns("/*");
 
 
         addInterceptor.excludePathPatterns("/login");
